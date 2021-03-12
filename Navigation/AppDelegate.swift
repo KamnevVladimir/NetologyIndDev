@@ -12,6 +12,9 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+    var timer: Timer?
+    var timerCount = 0.0
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print(type(of: self), #function)
@@ -53,11 +56,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         print(type(of: self), #function)
+        registerBackgroundTask()
         
         /*
-         Время работы приложения в BackgroundMode
-         
+         Время работы приложения в BackgroundMode около 25.2 секунд
          */
+    }
+    
+    func registerBackgroundTask() {
+        backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+            self?.endBackgroundTask()
+        }
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        assert(backgroundTask != .invalid)
+    }
+    
+    func endBackgroundTask() {
+        print("Background task ended.")
+        print("Время работы в Background = ", timerCount)
+        timer?.invalidate()
+        timerCount = 0
+        
+        UIApplication.shared.endBackgroundTask(backgroundTask)
+        backgroundTask = .invalid
+    }
+    
+    @objc private func updateTimer() {
+        timerCount += timer!.timeInterval
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
