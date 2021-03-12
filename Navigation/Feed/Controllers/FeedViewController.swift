@@ -40,6 +40,7 @@ final class FeedViewController: UIViewController {
         setupLayouts()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print(type(of: self), #function)

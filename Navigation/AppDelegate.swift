@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        print(type(of: self), #function)
         
         let feedNavigationController = UINavigationController(rootViewController: FeedViewController())
         let profileNavigationController = UINavigationController(rootViewController: LoginViewController())
@@ -33,5 +34,118 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        print(type(of: self), #function)
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print(type(of: self), #function)
+    }
+    
+    func applicationWillResignActive(_ application: UIApplication) {
+        print(type(of: self), #function)
+    }
+    
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        print(type(of: self), #function)
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        print(type(of: self), #function)
+        
+        /*
+         Время работы приложения в BackgroundMode
+         
+         */
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        print(type(of: self), #function)
+    }
+    
+    func applicationSignificantTimeChange(_ application: UIApplication) {
+        print(type(of: self), #function)
+    }
+    
+    func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
+        print(type(of: self), #function)
+    }
+    
+    func applicationShouldRequestHealthAuthorization(_ application: UIApplication) {
+        print(type(of: self), #function)
+    }
+    
+    func applicationProtectedDataDidBecomeAvailable(_ application: UIApplication) {
+        print(type(of: self), #function)
+    }
+    
+    func applicationProtectedDataWillBecomeUnavailable(_ application: UIApplication) {
+        print(type(of: self), #function)
+    }
+    
+    func application(_ application: UIApplication, didUpdate userActivity: NSUserActivity) {
+        print(type(of: self), #function)
+    }
+    
+    func application(_ application: UIApplication, didDecodeRestorableStateWith coder: NSCoder) {
+        print(type(of: self), #function)
+    }
+    
+    func application(_ application: UIApplication, willEncodeRestorableStateWith coder: NSCoder) {
+        print(type(of: self), #function)
+    }
+    
+    
+    func application(_ application: UIApplication, didChangeStatusBarFrame oldStatusBarFrame: CGRect) {
+        print(type(of: self), #function)
+    }
+    
+    func application(_ application: UIApplication, willChangeStatusBarFrame newStatusBarFrame: CGRect) {
+        print(type(of: self), #function)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print(type(of: self), #function)
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print(type(of: self), #function)
+    }
+    
+    
+    func application(_ application: UIApplication, didChangeStatusBarOrientation oldStatusBarOrientation: UIInterfaceOrientation) {
+        print(type(of: self), #function)
+    }
+    
+    
+    func application(_ application: UIApplication, didFailToContinueUserActivityWithType userActivityType: String, error: Error) {
+        print(type(of: self), #function)
+    }
+    
+    func application(_ application: UIApplication, willChangeStatusBarOrientation newStatusBarOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        print(type(of: self), #function)
+    }
+    
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print(type(of: self), #function)
+    }
+
+    
+    func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+        print(type(of: self), #function)
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        print(type(of: self), #function)
+    }
+    
+    func application(_ application: UIApplication, handleWatchKitExtensionRequest userInfo: [AnyHashable : Any]?, reply: @escaping ([AnyHashable : Any]?) -> Void) {
+        print(type(of: self), #function)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        print(type(of: self), #function)
+    }
 }
 
