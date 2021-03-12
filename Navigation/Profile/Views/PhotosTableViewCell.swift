@@ -69,6 +69,7 @@ final class PhotosTableViewCell: UITableViewCell {
             titleStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             titleStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             
+            detailedImage.heightAnchor.constraint(equalToConstant: 25),
             detailedImage.widthAnchor.constraint(equalTo: detailedImage.heightAnchor),
             
             previewStackView.topAnchor.constraint(equalTo: titleStackView.bottomAnchor, constant: 12),

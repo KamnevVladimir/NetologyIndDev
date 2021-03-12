@@ -24,6 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
         
+        // Setup title and icons within UITabBarController
+        tabBarController.tabBar.items?[0].image = #imageLiteral(resourceName: "home-page")
+        tabBarController.tabBar.items?[0].title = "Feed"
+        tabBarController.tabBar.items?[1].image = #imageLiteral(resourceName: "user")
+        tabBarController.tabBar.items?[1].title = "Profile"
+        
         return true
     }
 
