@@ -16,7 +16,7 @@ final class LoginViewController: UIViewController {
         textField.placeholder = "Email or phone"
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        textField.backgroundColor = .systemGray6
+        textField.backgroundColor = UIColor(red: 242, green: 242, blue: 247)
         textField.autocapitalizationType = .none
         textField.layer.cornerRadius = 10
         textField.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -38,7 +38,7 @@ final class LoginViewController: UIViewController {
         textField.placeholder = "Password"
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        textField.backgroundColor = .systemGray6
+        textField.backgroundColor = UIColor(red: 242, green: 242, blue: 247)
         textField.autocapitalizationType = .none
         textField.isSecureTextEntry = true
         textField.layer.cornerRadius = 10

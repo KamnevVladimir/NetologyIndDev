@@ -14,7 +14,7 @@ final class PhotosTableViewCell: UITableViewCell {
     private lazy var detailedImage: UIImageView = {
         let imageView = UIImageView()
         imageView.toAutoLayout()
-        imageView.image = UIImage(systemName: "arrow.right")
+        imageView.image = #imageLiteral(resourceName: "right-arrow")
         imageView.tintColor = .black
         return imageView
     }()

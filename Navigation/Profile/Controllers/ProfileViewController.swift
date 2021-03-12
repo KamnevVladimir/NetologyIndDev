@@ -4,7 +4,7 @@ final class ProfileViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.toAutoLayout()
-        tableView.backgroundColor = .systemGray6
+        tableView.backgroundColor = UIColor(red: 242, green: 242, blue: 247)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: String(describing: ProfileTableViewCell.self))
@@ -21,7 +21,7 @@ final class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = UIColor(red: 242, green: 242, blue: 247)
         hideKeyboardWhenTappedAround()
         
         setupView()
