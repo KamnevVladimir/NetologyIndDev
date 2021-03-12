@@ -144,8 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				060782B5250CE27700A87020 /* FeedViewController.swift */,
-				060782C5250CEB0A00A87020 /* InfoViewController.swift */,
 				060782C7250CEE5D00A87020 /* PostViewController.swift */,
+				060782C5250CEB0A00A87020 /* InfoViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

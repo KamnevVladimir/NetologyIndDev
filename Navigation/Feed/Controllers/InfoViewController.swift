@@ -9,14 +9,37 @@
 import UIKit
 
 class InfoViewController: UIViewController {
+    private lazy var alertButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.toAutoLayout()
+        button.setTitle("Show alert", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        button.addTarget(self, action: #selector(alertButtonTapped), for: .touchUpInside)
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setupViews()
+        setupLayouts()
     }
     
-    @IBAction func showAlert(_ sender: Any) {
+    private func setupLayouts() {
+        let constraints = [
+            alertButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            alertButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    private func setupViews() {
+        view.backgroundColor = .systemYellow
+        view.addSubview(alertButton)
+    }
+    
+    @objc private func alertButtonTapped() {
         let alertController = UIAlertController(title: "Удалить пост?", message: "Пост нельзя будет восстановить", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Отмена", style: .default) { _ in
             print("Отмена")
@@ -28,4 +51,5 @@ class InfoViewController: UIViewController {
         alertController.addAction(deleteAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
 }
