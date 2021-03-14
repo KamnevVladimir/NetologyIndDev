@@ -1,18 +1,11 @@
 import UIKit
 
 final class LoginViewController: UIViewController {
-    private lazy var logoImageView: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
-        imageView.toAutoLayout()
-        return imageView
-    }()
-    
     private lazy var loginTextField: UITextField = {
         let textField = UITextField()
         let rectangle = CGRect(x: 0, y: 0, width: 10, height: 30)
         let paddingView = UIView(frame: rectangle)
         
-        textField.toAutoLayout()
         textField.placeholder = "Email or phone"
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -34,7 +27,6 @@ final class LoginViewController: UIViewController {
         let rectangle = CGRect(x: 0, y: 0, width: 10, height: 30)
         let paddingView = UIView(frame: rectangle)
         
-        textField.toAutoLayout()
         textField.placeholder = "Password"
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -56,7 +48,6 @@ final class LoginViewController: UIViewController {
         let button = UIButton(type: .system)
         let backgroundImage = #imageLiteral(resourceName: "blue_pixel")
         
-        button.toAutoLayout()
         button.setTitle("Log in", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 10
@@ -70,24 +61,18 @@ final class LoginViewController: UIViewController {
         return button
     }()
     
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.toAutoLayout()
-        return scrollView
-    }()
-    
-    private lazy var containerView: UIView = {
-        let view = UIView()
-        view.toAutoLayout()
-        return view
-    }()
+    private lazy var scrollView = UIScrollView()
+    private lazy var containerView = UIView()
+    private lazy var logoImageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationController?.isNavigationBarHidden = true
-        setupViews()
+        
         hideKeyboardWhenTappedAround()
+        setupViews()
+        setupLayouts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -130,41 +115,39 @@ final class LoginViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
         containerView.addSubviews(logoImageView, loginButton, loginTextField, passwordTextField)
+    }
+    
+    private func setupLayouts() {
+        scrollView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
         
-        let constraints = [
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            
-            containerView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            containerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            
-            logoImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 120),
-            logoImageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            logoImageView.widthAnchor.constraint(equalToConstant: 100),
-            logoImageView.heightAnchor.constraint(equalToConstant: 100),
-            
-            loginTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 120),
-            loginTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
-            loginTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16),
-            loginTextField.heightAnchor.constraint(equalToConstant: 50),
-            
-            passwordTextField.topAnchor.constraint(equalTo: loginTextField.bottomAnchor, constant: -0.5),
-            passwordTextField.leadingAnchor.constraint(equalTo: loginTextField.leadingAnchor),
-            passwordTextField.trailingAnchor.constraint(equalTo: loginTextField.trailingAnchor),
-            passwordTextField.heightAnchor.constraint(equalTo: loginTextField.heightAnchor),
-            
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 16),
-            loginButton.leadingAnchor.constraint(equalTo: loginTextField.leadingAnchor),
-            loginButton.trailingAnchor.constraint(equalTo: loginTextField.trailingAnchor),
-            loginButton.heightAnchor.constraint(equalToConstant: 50),
-            loginButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -16)
-        ]
-        NSLayoutConstraint.activate(constraints)
+        containerView.snp.makeConstraints { (make) in
+            make.edges.width.equalToSuperview()
+        }
+        
+        logoImageView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().inset(120)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize(width: 100, height: 100))
+        }
+        
+        loginTextField.snp.makeConstraints { (make) in
+            make.top.equalTo(logoImageView.snp.bottom).inset(-120)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(50)
+        }
+
+        passwordTextField.snp.makeConstraints { (make) in
+            make.top.equalTo(loginTextField.snp.bottom)
+            make.leading.trailing.height.equalTo(loginTextField)
+        }
+
+        loginButton.snp.makeConstraints { (make) in
+            make.top.equalTo(passwordTextField.snp.bottom).inset(-16)
+            make.leading.trailing.height.equalTo(loginTextField)
+            make.bottom.equalToSuperview().inset(-16)
+        }
     }
 
 }
