@@ -1,5 +1,6 @@
 import UIKit
 
+
 final class PhotosViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {

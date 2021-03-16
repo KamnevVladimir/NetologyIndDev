@@ -47,6 +47,7 @@
 		15BB57E025BA45400009750F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB57DF25BA45400009750F /* ProfileViewController.swift */; };
 		15BB57E425BB51FD0009750F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB57E325BB51FD0009750F /* UIColor.swift */; };
 		15BB57E725BB562F0009750F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB57E625BB562F0009750F /* UIView.swift */; };
+		15C26BB326014DE100036E0D /* AuthChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C26BB226014DE100036E0D /* AuthChecker.swift */; };
 		15F5365925C5E43800FE3E0E /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5365825C5E43800FE3E0E /* PhotosTableViewCell.swift */; };
 		15F5365D25C5EDB100FE3E0E /* PostImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5365C25C5EDB100FE3E0E /* PostImages.swift */; };
 /* End PBXBuildFile section */
@@ -75,6 +76,7 @@
 		15BB57DF25BA45400009750F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		15BB57E325BB51FD0009750F /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		15BB57E625BB562F0009750F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		15C26BB226014DE100036E0D /* AuthChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthChecker.swift; sourceTree = "<group>"; };
 		15F5365825C5E43800FE3E0E /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		15F5365C25C5EDB100FE3E0E /* PostImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,8 +184,9 @@
 		15BB57DB25BA44FB0009750F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				15B712AC25C701300049C4D7 /* Controllers */,
+				15C26BB626014FE400036E0D /* Models */,
 				15B712AD25C701490049C4D7 /* Views */,
+				15B712AC25C701300049C4D7 /* Controllers */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -198,6 +201,14 @@
 				15B712A525C6F3120049C4D7 /* UIStackView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		15C26BB626014FE400036E0D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				15C26BB226014DE100036E0D /* AuthChecker.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,6 +311,7 @@
 				15BB57E725BB562F0009750F /* UIView.swift in Sources */,
 				15B712B125C71BC70049C4D7 /* PhotosCollectionViewCell.swift in Sources */,
 				15B712AA25C6FEFB0049C4D7 /* PhotosViewController.swift in Sources */,
+				15C26BB326014DE100036E0D /* AuthChecker.swift in Sources */,
 				1519BA0A25C4A93600D1B771 /* ModelPost.swift in Sources */,
 				060782B6250CE27700A87020 /* FeedViewController.swift in Sources */,
 				1519BA1325C4B27000D1B771 /* ProfileTableViewCell.swift in Sources */,
