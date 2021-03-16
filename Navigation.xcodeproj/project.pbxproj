@@ -48,6 +48,7 @@
 		15BB57E425BB51FD0009750F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB57E325BB51FD0009750F /* UIColor.swift */; };
 		15BB57E725BB562F0009750F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB57E625BB562F0009750F /* UIView.swift */; };
 		15C26BB326014DE100036E0D /* AuthChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C26BB226014DE100036E0D /* AuthChecker.swift */; };
+		15C26BBA26015B3700036E0D /* AuthInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C26BB926015B3700036E0D /* AuthInspector.swift */; };
 		15F5365925C5E43800FE3E0E /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5365825C5E43800FE3E0E /* PhotosTableViewCell.swift */; };
 		15F5365D25C5EDB100FE3E0E /* PostImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5365C25C5EDB100FE3E0E /* PostImages.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		15BB57E325BB51FD0009750F /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		15BB57E625BB562F0009750F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		15C26BB226014DE100036E0D /* AuthChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthChecker.swift; sourceTree = "<group>"; };
+		15C26BB926015B3700036E0D /* AuthInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInspector.swift; sourceTree = "<group>"; };
 		15F5365825C5E43800FE3E0E /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		15F5365C25C5EDB100FE3E0E /* PostImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				15C26BB226014DE100036E0D /* AuthChecker.swift */,
+				15C26BB926015B3700036E0D /* AuthInspector.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				060782B2250CE27700A87020 /* AppDelegate.swift in Sources */,
 				060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */,
 				060782CA250CEE7200A87020 /* Post.swift in Sources */,
+				15C26BBA26015B3700036E0D /* AuthInspector.swift in Sources */,
 				15BB57E425BB51FD0009750F /* UIColor.swift in Sources */,
 				1546C62625C0D954008B3528 /* UIViewController.swift in Sources */,
 				15F5365D25C5EDB100FE3E0E /* PostImages.swift in Sources */,

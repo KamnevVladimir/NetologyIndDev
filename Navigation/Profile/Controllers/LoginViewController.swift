@@ -2,12 +2,14 @@ import UIKit
 
 //MARK: - LoginViewControllerDelegate
 protocol LoginViewControllerDelegate {
-    func checkLogin(controller: LoginViewController, login: String)
-    func checkPassword(controller: LoginViewController, password: String)
+    func checkLogin(controller: LoginViewController, login: String) -> Bool
+    func checkPassword(controller: LoginViewController, password: String) -> Bool
 }
 
 //MARK: - LoginViewController
 final class LoginViewController: UIViewController {
+    var delegate: LoginViewControllerDelegate?
+    
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
         imageView.toAutoLayout()
