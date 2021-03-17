@@ -12,6 +12,15 @@ final class FeedViewController: UIViewController {
     
     let post: Post = Post(title: "Пост")
     
+    private lazy var postButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.toAutoLayout()
+        button.setTitle("Open post", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        button.addTarget(self, action: #selector(postButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         print(type(of: self), #function)
@@ -25,6 +34,10 @@ final class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(type(of: self), #function)
+        
+        title = "Feed"
+        setupViews()
+        setupLayouts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,5 +78,25 @@ final class FeedViewController: UIViewController {
             return
         }
         postViewController.post = post
+    }
+    
+    private func setupViews() {
+        view.backgroundColor = UIColor.systemGreen
+        view.addSubview(postButton)
+    }
+    
+    private func setupLayouts() {
+        let constraints = [
+            postButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            postButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    @objc private func postButtonTapped() {
+        let postViewController = PostViewController()
+        postViewController.post = post
+        navigationController?.pushViewController(postViewController, animated: true)
     }
 }

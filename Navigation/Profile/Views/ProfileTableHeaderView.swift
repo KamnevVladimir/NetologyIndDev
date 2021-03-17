@@ -83,7 +83,7 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
     
     
     private func setupViews() {
-        contentView.backgroundColor = .systemGray6
+        contentView.backgroundColor = UIColor(red: 242, green: 242, blue: 247)
         
         contentView.addSubviews(profileImageView,
                     profileNameLabel,

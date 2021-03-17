@@ -14,7 +14,7 @@ final class PhotosTableViewCell: UITableViewCell {
     private lazy var detailedImage: UIImageView = {
         let imageView = UIImageView()
         imageView.toAutoLayout()
-        imageView.image = UIImage(systemName: "arrow.right")
+        imageView.image = #imageLiteral(resourceName: "right-arrow")
         imageView.tintColor = .black
         return imageView
     }()
@@ -69,6 +69,7 @@ final class PhotosTableViewCell: UITableViewCell {
             titleStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             titleStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             
+            detailedImage.heightAnchor.constraint(equalToConstant: 25),
             detailedImage.widthAnchor.constraint(equalTo: detailedImage.heightAnchor),
             
             previewStackView.topAnchor.constraint(equalTo: titleStackView.bottomAnchor, constant: 12),
