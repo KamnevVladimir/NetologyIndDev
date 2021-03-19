@@ -12,15 +12,6 @@ final class FeedViewController: UIViewController {
     
     let post: Post = Post(title: "Пост")
     
-    private lazy var postButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.toAutoLayout()
-        button.setTitle("Open post", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        button.addTarget(self, action: #selector(postButtonTapped), for: .touchUpInside)
-        return button
-    }()
-    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         print(type(of: self), #function)
