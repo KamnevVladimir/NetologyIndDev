@@ -12,6 +12,7 @@ final class FeedViewController: UIViewController {
     
     let post: Post = Post(title: "Пост")
     var onTap: (() -> Void)?
+    var output: FeedViewOutput
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -30,6 +31,7 @@ final class FeedViewController: UIViewController {
         title = "Feed"
         setupViews()
         setupLayouts()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,4 +93,9 @@ final class FeedViewController: UIViewController {
         postViewController.post = post
         navigationController?.pushViewController(postViewController, animated: true)
     }
+}
+
+protocol FeedViewOutput: class {
+    var navigationController: UINavigationController? { get set }
+    func showPost()
 }
