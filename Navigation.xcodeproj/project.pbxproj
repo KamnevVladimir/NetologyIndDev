@@ -38,6 +38,7 @@
 		152ABE5025FB8007005A163E /* ProfileTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519BA0D25C4AFB500D1B771 /* ProfileTableHeaderView.swift */; };
 		152ABE5325FB8007005A163E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 060782BC250CE27A00A87020 /* LaunchScreen.storyboard */; };
 		152ABE5425FB8007005A163E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 060782BA250CE27A00A87020 /* Assets.xcassets */; };
+		15469FB12604D21000AB2228 /* FeedContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15469FB02604D21000AB2228 /* FeedContainerView.swift */; };
 		1546C60E25BF75DC008B3528 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C60D25BF75DB008B3528 /* LoginViewController.swift */; };
 		1546C61F25C0D3ED008B3528 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C61E25C0D3ED008B3528 /* UIImage.swift */; };
 		1546C62625C0D954008B3528 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C62525C0D954008B3528 /* UIViewController.swift */; };
@@ -67,6 +68,7 @@
 		152ABE5925FB8007005A163E /* Navigation dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Navigation dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		152ABE5A25FB8007005A163E /* InfoDev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = InfoDev.plist; path = /Users/v/Desktop/IndDev/InfoDev.plist; sourceTree = "<absolute>"; };
 		152ABE6D25FB8571005A163E /* Navigation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Navigation.entitlements; sourceTree = "<group>"; };
+		15469FB02604D21000AB2228 /* FeedContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContainerView.swift; sourceTree = "<group>"; };
 		1546C60D25BF75DB008B3528 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1546C61E25C0D3ED008B3528 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		1546C62525C0D954008B3528 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +129,6 @@
 				060782BC250CE27A00A87020 /* LaunchScreen.storyboard */,
 				060782BF250CE27A00A87020 /* Info.plist */,
 				1519BA0625C4A8BC00D1B771 /* Feed */,
-				15A18E2325C1725C000EF8DA /* Model */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -135,9 +136,19 @@
 		1519BA0625C4A8BC00D1B771 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				15A18E2325C1725C000EF8DA /* Model */,
+				15469FAF2604D15C00AB2228 /* View */,
 				15B712AE25C7015D0049C4D7 /* Controllers */,
 			);
 			path = Feed;
+			sourceTree = "<group>";
+		};
+		15469FAF2604D15C00AB2228 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				15469FB02604D21000AB2228 /* FeedContainerView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		15A18E2325C1725C000EF8DA /* Model */ = {
@@ -311,6 +322,7 @@
 				060782CA250CEE7200A87020 /* Post.swift in Sources */,
 				15BB57E425BB51FD0009750F /* UIColor.swift in Sources */,
 				1546C62625C0D954008B3528 /* UIViewController.swift in Sources */,
+				15469FB12604D21000AB2228 /* FeedContainerView.swift in Sources */,
 				15F5365D25C5EDB100FE3E0E /* PostImages.swift in Sources */,
 				15B712A625C6F3120049C4D7 /* UIStackView.swift in Sources */,
 				15BB57E025BA45400009750F /* ProfileViewController.swift in Sources */,
