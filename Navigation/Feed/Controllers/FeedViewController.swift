@@ -31,8 +31,6 @@ final class FeedViewController: UIViewController {
         
         title = "Feed"
         setupViews()
-        
-        output.navigationController = navigationController
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,6 +75,12 @@ final class FeedViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = UIColor.systemGreen
+        
+        output.navigationController = navigationController
+        
+        let feedContainerView = FeedContainerView(frame: view.frame)
+        feedContainerView.onTap = onTap
+        view.addSubview(feedContainerView)
     }
     
     @objc private func postButtonTapped() {
