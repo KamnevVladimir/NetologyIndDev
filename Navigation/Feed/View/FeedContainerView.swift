@@ -17,4 +17,7 @@ class FeedContainerView: UIView {
     required init?(coder: NSCoder) {
         fatalError()
     }
+    
+    @objc private func postButtonTapped() {
+    }
 }
