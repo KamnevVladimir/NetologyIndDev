@@ -16,14 +16,13 @@ final class FeedViewController: UIViewController {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         output = PostPresenter()
+        onTap = output.showPost
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         print(type(of: self), #function)
     }
     
     required init?(coder: NSCoder) {
-        output = PostPresenter()
-        super.init(coder: coder)
-        print(type(of: self), #function)
+        fatalError()
     }
     
     override func viewDidLoad() {
