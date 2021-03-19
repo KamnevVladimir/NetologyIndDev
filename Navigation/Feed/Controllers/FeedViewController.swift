@@ -15,11 +15,13 @@ final class FeedViewController: UIViewController {
     var output: FeedViewOutput
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        output = PostPresenter()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         print(type(of: self), #function)
     }
     
     required init?(coder: NSCoder) {
+        output = PostPresenter()
         super.init(coder: coder)
         print(type(of: self), #function)
     }
@@ -30,8 +32,8 @@ final class FeedViewController: UIViewController {
         
         title = "Feed"
         setupViews()
-        setupLayouts()
         
+        output.navigationController = navigationController
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,16 +78,6 @@ final class FeedViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = UIColor.systemGreen
-        view.addSubview(postButton)
-    }
-    
-    private func setupLayouts() {
-        let constraints = [
-            postButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            postButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ]
-        
-        NSLayoutConstraint.activate(constraints)
     }
     
     @objc private func postButtonTapped() {
