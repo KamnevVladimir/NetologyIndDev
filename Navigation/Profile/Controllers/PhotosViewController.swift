@@ -1,6 +1,7 @@
 import UIKit
 
 final class PhotosViewController: UIViewController {
+    weak var coordinator: ProfileFlowCoordinator?
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

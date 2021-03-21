@@ -213,8 +213,8 @@
 			isa = PBXGroup;
 			children = (
 				15DC3EA02607FC7A00952B25 /* AppCoordinator.swift */,
-				157D8165260805230008FA33 /* FeedCoordinator.swift */,
 				157D81692608052C0008FA33 /* ProfileCoordinator.swift */,
+				157D8165260805230008FA33 /* FeedCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";

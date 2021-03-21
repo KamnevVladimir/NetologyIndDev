@@ -9,6 +9,8 @@
 import UIKit
 
 class InfoViewController: UIViewController {
+    weak var coordinator: FeedFlowCoordinator?
+    
     private lazy var alertButton: UIButton = {
         let button = UIButton(type: .system)
         button.toAutoLayout()

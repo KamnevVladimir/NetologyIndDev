@@ -1,6 +1,8 @@
 import UIKit
 
 final class ProfileViewController: UIViewController {
+    weak var coordinator: ProfileFlowCoordinator?
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.toAutoLayout()
