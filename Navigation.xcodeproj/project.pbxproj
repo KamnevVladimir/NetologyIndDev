@@ -47,7 +47,7 @@
 		15BB57E025BA45400009750F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB57DF25BA45400009750F /* ProfileViewController.swift */; };
 		15BB57E425BB51FD0009750F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB57E325BB51FD0009750F /* UIColor.swift */; };
 		15BB57E725BB562F0009750F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB57E625BB562F0009750F /* UIView.swift */; };
-		15DC3EA12607FC7A00952B25 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC3EA02607FC7A00952B25 /* MainCoordinator.swift */; };
+		15DC3EA12607FC7A00952B25 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DC3EA02607FC7A00952B25 /* AppCoordinator.swift */; };
 		15F5365925C5E43800FE3E0E /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5365825C5E43800FE3E0E /* PhotosTableViewCell.swift */; };
 		15F5365D25C5EDB100FE3E0E /* PostImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5365C25C5EDB100FE3E0E /* PostImages.swift */; };
 /* End PBXBuildFile section */
@@ -77,7 +77,7 @@
 		15BB57DF25BA45400009750F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		15BB57E325BB51FD0009750F /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		15BB57E625BB562F0009750F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		15DC3EA02607FC7A00952B25 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		15DC3EA02607FC7A00952B25 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		15F5365825C5E43800FE3E0E /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		15F5365C25C5EDB100FE3E0E /* PostImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,7 +208,7 @@
 		15DC3E9F2607FC4E00952B25 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				15DC3EA02607FC7A00952B25 /* MainCoordinator.swift */,
+				15DC3EA02607FC7A00952B25 /* AppCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -323,7 +323,7 @@
 				15BB57E425BB51FD0009750F /* UIColor.swift in Sources */,
 				1546C62625C0D954008B3528 /* UIViewController.swift in Sources */,
 				15F5365D25C5EDB100FE3E0E /* PostImages.swift in Sources */,
-				15DC3EA12607FC7A00952B25 /* MainCoordinator.swift in Sources */,
+				15DC3EA12607FC7A00952B25 /* AppCoordinator.swift in Sources */,
 				15B712A625C6F3120049C4D7 /* UIStackView.swift in Sources */,
 				15BB57E025BA45400009750F /* ProfileViewController.swift in Sources */,
 				1546C61F25C0D3ED008B3528 /* UIImage.swift in Sources */,
