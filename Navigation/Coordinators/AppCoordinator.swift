@@ -29,6 +29,7 @@ class AppCoordinator: BaseCoordinator {
         var navigationControllers = [UINavigationController]()
         for coordinator in childCoordinators {
             navigationControllers.append(coordinator.navigationController)
+            coordinator.start()
         }
         
         tabBarController.viewControllers = navigationControllers
