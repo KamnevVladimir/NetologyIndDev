@@ -1,6 +1,8 @@
 import UIKit
 
 final class LoginViewController: UIViewController {
+    weak var coordinator: ChildCoordinator?
+    
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
         imageView.toAutoLayout()

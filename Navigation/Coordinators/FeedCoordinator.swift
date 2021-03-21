@@ -1,9 +1,18 @@
-//
-//  FeedCoordinator.swift
-//  Navigation
-//
-//  Created by Tsar on 22.03.2021.
-//  Copyright © 2021 Artem Novichkov. All rights reserved.
-//
+import UIKit
 
-import Foundation
+class FeedCoordinator: ChildCoordinator {
+    var navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
+    
+    func start() {
+        let loginViewController = LoginViewController()
+        loginViewController.coordinator = self
+        
+        navigationController.pushViewController(loginViewController, animated: false)
+    }
+    
+    
+}
