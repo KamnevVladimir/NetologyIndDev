@@ -41,6 +41,8 @@
 		1546C60E25BF75DC008B3528 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C60D25BF75DB008B3528 /* LoginViewController.swift */; };
 		1546C61F25C0D3ED008B3528 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C61E25C0D3ED008B3528 /* UIImage.swift */; };
 		1546C62625C0D954008B3528 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C62525C0D954008B3528 /* UIViewController.swift */; };
+		157D8166260805230008FA33 /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D8165260805230008FA33 /* FeedCoordinator.swift */; };
+		157D816A2608052C0008FA33 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D81692608052C0008FA33 /* ProfileCoordinator.swift */; };
 		15B712A625C6F3120049C4D7 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B712A525C6F3120049C4D7 /* UIStackView.swift */; };
 		15B712AA25C6FEFB0049C4D7 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B712A925C6FEFB0049C4D7 /* PhotosViewController.swift */; };
 		15B712B125C71BC70049C4D7 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B712B025C71BC70049C4D7 /* PhotosCollectionViewCell.swift */; };
@@ -71,6 +73,8 @@
 		1546C60D25BF75DB008B3528 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1546C61E25C0D3ED008B3528 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		1546C62525C0D954008B3528 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		157D8165260805230008FA33 /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
+		157D81692608052C0008FA33 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		15B712A525C6F3120049C4D7 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		15B712A925C6FEFB0049C4D7 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		15B712B025C71BC70049C4D7 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -130,7 +134,6 @@
 				060782BC250CE27A00A87020 /* LaunchScreen.storyboard */,
 				060782BF250CE27A00A87020 /* Info.plist */,
 				1519BA0625C4A8BC00D1B771 /* Feed */,
-				15A18E2325C1725C000EF8DA /* Model */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 		1519BA0625C4A8BC00D1B771 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				15A18E2325C1725C000EF8DA /* Model */,
 				15B712AE25C7015D0049C4D7 /* Controllers */,
 			);
 			path = Feed;
@@ -209,6 +213,8 @@
 			isa = PBXGroup;
 			children = (
 				15DC3EA02607FC7A00952B25 /* AppCoordinator.swift */,
+				157D8165260805230008FA33 /* FeedCoordinator.swift */,
+				157D81692608052C0008FA33 /* ProfileCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -310,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				157D816A2608052C0008FA33 /* ProfileCoordinator.swift in Sources */,
 				15BB57E725BB562F0009750F /* UIView.swift in Sources */,
 				15B712B125C71BC70049C4D7 /* PhotosCollectionViewCell.swift in Sources */,
 				15B712AA25C6FEFB0049C4D7 /* PhotosViewController.swift in Sources */,
@@ -320,6 +327,7 @@
 				060782B2250CE27700A87020 /* AppDelegate.swift in Sources */,
 				060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */,
 				060782CA250CEE7200A87020 /* Post.swift in Sources */,
+				157D8166260805230008FA33 /* FeedCoordinator.swift in Sources */,
 				15BB57E425BB51FD0009750F /* UIColor.swift in Sources */,
 				1546C62625C0D954008B3528 /* UIViewController.swift in Sources */,
 				15F5365D25C5EDB100FE3E0E /* PostImages.swift in Sources */,
