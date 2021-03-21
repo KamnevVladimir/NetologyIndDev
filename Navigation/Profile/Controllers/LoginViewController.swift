@@ -123,9 +123,7 @@ final class LoginViewController: UIViewController {
 
     
     @objc private func loginButtonPressed() {
-        guard let coordinator = coordinator as? ProfileCoordinator else { return }
-        print(coordinator)
-        coordinator.showProfileVC()
+        coordinator?.showProfileVC()
     }
     
     private func setupViews() {

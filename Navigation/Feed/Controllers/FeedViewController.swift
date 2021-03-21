@@ -95,8 +95,6 @@ final class FeedViewController: UIViewController {
     }
     
     @objc private func postButtonTapped() {
-        let postViewController = PostViewController()
-        postViewController.post = post
-        navigationController?.pushViewController(postViewController, animated: true)
+        coordinator?.showPostVC(post: post)
     }
 }

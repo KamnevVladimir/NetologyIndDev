@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var backgroundTask: UIBackgroundTaskIdentifier = .invalid
     var timer: Timer?
     var timerCount = 0.0
+    var appCoordinator: AppCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print(type(of: self), #function)
@@ -22,11 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let feedCoordinator = FeedCoordinator(navigationController: UINavigationController())
         let profileCoordinator = ProfileCoordinator(navigationController: UINavigationController())
         
-        let appCoordinator = AppCoordinator(tabBarController: UITabBarController(), childCoordinators: [feedCoordinator, profileCoordinator])
-        appCoordinator.start()
+        appCoordinator = AppCoordinator(tabBarController: UITabBarController(), childCoordinators: [feedCoordinator, profileCoordinator])
+        appCoordinator?.start()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = appCoordinator.tabBarController
+        window?.rootViewController = appCoordinator?.tabBarController
         window?.makeKeyAndVisible()
         
         return true

@@ -52,11 +52,6 @@ final class ProfileViewController: UIViewController {
         
         NSLayoutConstraint.activate(constraints)
     }
-    
-    private func openPhotosViewController() {
-        let viewController = PhotosViewController()
-        navigationController?.pushViewController(viewController, animated: true)
-    }
 }
 
 //MARK: - TableViewDelegate
@@ -64,7 +59,7 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            openPhotosViewController()
+            coordinator?.showPhotosVC()
         default:
             tableView.deselectRow(at: indexPath, animated: true)
             return

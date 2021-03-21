@@ -1,8 +1,7 @@
 import UIKit
 
 protocol FeedFlowCoordinator: ChildCoordinator {
-    func showPostVC()
-    func showInfoVC()
+    func showPostVC(post: Post)
 }
 
 class FeedCoordinator: FeedFlowCoordinator {
@@ -19,19 +18,11 @@ class FeedCoordinator: FeedFlowCoordinator {
         navigationController.pushViewController(feedViewController, animated: false)
     }
     
-    func showPostVC() {
+    func showPostVC(post: Post) {
         let postViewController = PostViewController()
         postViewController.coordinator = self
+        postViewController.post = post
         
         navigationController.pushViewController(postViewController, animated: true)
     }
-    
-    func showInfoVC() {
-        let infoViewController = InfoViewController()
-        infoViewController.coordinator = self
-        
-        navigationController.pushViewController(infoViewController, animated: true)
-    }
-
-    
 }
