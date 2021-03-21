@@ -8,10 +8,10 @@ class FeedCoordinator: ChildCoordinator {
     }
     
     func start() {
-        let loginViewController = LoginViewController()
-        loginViewController.coordinator = self
+        let feedViewController = FeedViewController()
+        feedViewController.coordinator = self
         
-        navigationController.pushViewController(loginViewController, animated: false)
+        navigationController.pushViewController(feedViewController, animated: false)
     }
     
     

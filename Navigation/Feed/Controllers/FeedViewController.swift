@@ -9,7 +9,7 @@
 import UIKit
 
 final class FeedViewController: UIViewController {
-    
+    weak var coordinator: ChildCoordinator?
     let post: Post = Post(title: "Пост")
     
     private lazy var postButton: UIButton = {
