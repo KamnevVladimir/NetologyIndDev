@@ -14,6 +14,7 @@ class FeedCoordinator: FeedFlowCoordinator {
     func start() {
         let feedViewController = FeedViewController()
         feedViewController.coordinator = self
+        feedViewController.tabBarItem = TabBarModel.items[.feed]
         
         navigationController.pushViewController(feedViewController, animated: false)
     }

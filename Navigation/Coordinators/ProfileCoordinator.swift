@@ -15,6 +15,7 @@ class ProfileCoordinator: ProfileFlowCoordinator {
     func start() {
         let loginViewController = LoginViewController()
         loginViewController.coordinator = self
+        loginViewController.tabBarItem = TabBarModel.items[.profile]
         
         navigationController.pushViewController(loginViewController, animated: false)
     }

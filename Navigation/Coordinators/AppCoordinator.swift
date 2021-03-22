@@ -33,15 +33,5 @@ class AppCoordinator: BaseCoordinator {
         }
         
         tabBarController.viewControllers = navigationControllers
-        settingsTabBar()
     }
-    
-    // Setup title and icons within UITabBarController
-    private func settingsTabBar() {
-        tabBarController.tabBar.items?[0].image = #imageLiteral(resourceName: "home-page")
-        tabBarController.tabBar.items?[0].title = "Feed"
-        tabBarController.tabBar.items?[1].image = #imageLiteral(resourceName: "user")
-        tabBarController.tabBar.items?[1].title = "Profile"
-    }
-    
 }
