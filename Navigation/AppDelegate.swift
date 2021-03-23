@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(type(of: self), #function)
         
         let feedNavigationController = UINavigationController(rootViewController: FeedViewController())
-        let profileNavigationController = UINavigationController(rootViewController: LoginViewController())
+        let loginNavigationController = UINavigationController(rootViewController: LoginViewController())
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [feedNavigationController, profileNavigationController]
+        tabBarController.viewControllers = [feedNavigationController, loginNavigationController]
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = tabBarController

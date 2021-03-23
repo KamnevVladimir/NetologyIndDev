@@ -11,24 +11,18 @@ import UIKit
 final class FeedViewController: UIViewController {
     
     let post: Post = Post(title: "Пост")
-    
-    private lazy var postButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.toAutoLayout()
-        button.setTitle("Open post", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        button.addTarget(self, action: #selector(postButtonTapped), for: .touchUpInside)
-        return button
-    }()
+    var onTap: (() -> Void)?
+    var output: FeedViewOutput
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        output = PostPresenter()
+        onTap = output.showPost
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         print(type(of: self), #function)
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        print(type(of: self), #function)
+        fatalError()
     }
     
     override func viewDidLoad() {
@@ -37,7 +31,6 @@ final class FeedViewController: UIViewController {
         
         title = "Feed"
         setupViews()
-        setupLayouts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,16 +75,12 @@ final class FeedViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = UIColor.systemGreen
-        view.addSubview(postButton)
-    }
-    
-    private func setupLayouts() {
-        let constraints = [
-            postButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            postButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ]
         
-        NSLayoutConstraint.activate(constraints)
+        output.navigationController = navigationController
+        
+        let feedContainerView = FeedContainerView(frame: view.frame)
+        feedContainerView.onTap = onTap
+        view.addSubview(feedContainerView)
     }
     
     @objc private func postButtonTapped() {
@@ -99,4 +88,9 @@ final class FeedViewController: UIViewController {
         postViewController.post = post
         navigationController?.pushViewController(postViewController, animated: true)
     }
+}
+
+protocol FeedViewOutput: class {
+    var navigationController: UINavigationController? { get set }
+    func showPost()
 }

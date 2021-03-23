@@ -1,54 +1,43 @@
 import UIKit
+import SnapKit
 
 final class ProfileViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.toAutoLayout()
+
         tableView.backgroundColor = UIColor(red: 242, green: 242, blue: 247)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: String(describing: ProfileTableViewCell.self))
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
         tableView.register(ProfileTableHeaderView.self, forHeaderFooterViewReuseIdentifier: String(describing: ProfileTableHeaderView.self))
+        
         return tableView
     }()
     
-    private let containerView: UIView = {
-        let view = UIView()
-        view.toAutoLayout()
-        return view
-    }()
+    private lazy var containerView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 242, green: 242, blue: 247)
         hideKeyboardWhenTappedAround()
-        
-        setupView()
+        setupViews()
+        setupLayouts()
     }
     
-    private func setupView() {
+    private func setupViews() {
         view.addSubviews(tableView)
         tableView.addSubview(containerView)
-//        tableView.allowsSelection = false
-        
-        setupLayout()
     }
     
-    private func setupLayout() {
-        let constraints = [
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            
-            containerView.topAnchor.constraint(equalTo: tableView.topAnchor),
-            containerView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
-            containerView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor)
-        ]
+    private func setupLayouts() {
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.view.safeAreaLayoutGuide.snp.edges)
+        }
         
-        NSLayoutConstraint.activate(constraints)
+        containerView.snp.makeConstraints { (make) in
+            make.edges.equalTo(tableView)
+        }
     }
     
     private func openPhotosViewController() {
