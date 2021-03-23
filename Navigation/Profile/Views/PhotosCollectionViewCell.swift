@@ -10,7 +10,6 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     
     private lazy var photoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.toAutoLayout()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         return imageView
@@ -21,7 +20,7 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         backgroundColor = .red
         setupViews()
-        setupConstraints()
+        setupLayouts()
     }
     
     required init?(coder: NSCoder) {
@@ -32,17 +31,9 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(photoImageView)
     }
     
-    private func setupConstraints() {
-        let constraints = [
-            photoImageView.topAnchor.constraint(equalTo: topAnchor),
-            photoImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            photoImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-        ]
-        
-        NSLayoutConstraint.activate(constraints)
+    private func setupLayouts() {
+        photoImageView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
-    
-
-    
 }
