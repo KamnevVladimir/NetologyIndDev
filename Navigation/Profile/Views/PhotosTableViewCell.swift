@@ -37,10 +37,12 @@ final class PhotosTableViewCell: UITableViewCell {
     }()
     
     private lazy var arrayPreviewImageViews: [PreviewImageView] = {
-        var previewImageView1 = PreviewImageView(image: PhotosModel.images[0])
-        var previewImageView2 = PreviewImageView(image: PhotosModel.images[1])
-        var previewImageView3 = PreviewImageView(image: PhotosModel.images[2])
-        var previewImageView4 = PreviewImageView(image: PhotosModel.images[3])
+        /// Пока заглушка
+        let photosModel = PhotosModel()
+        var previewImageView1 = PreviewImageView(image: photosModel.images[0])
+        var previewImageView2 = PreviewImageView(image: photosModel.images[1])
+        var previewImageView3 = PreviewImageView(image: photosModel.images[2])
+        var previewImageView4 = PreviewImageView(image: photosModel.images[3])
         
         let arrayImageViews = [previewImageView1, previewImageView2, previewImageView3, previewImageView4]
         return arrayImageViews

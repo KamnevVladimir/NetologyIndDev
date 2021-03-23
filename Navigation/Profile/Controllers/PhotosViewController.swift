@@ -60,17 +60,12 @@ extension PhotosViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return output?.getPhotosCount() ?? 0
+        return output.getPhotosCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let output = output else {
-            <#statements#>
-        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PhotosCollectionViewCell.self), for: indexPath) as! PhotosCollectionViewCell
-        let image = PhotosModel.images[indexPath.item]
-        
-        cell.image = image
+        cell.image = output.getPhotos()[indexPath.item]
         return cell
     }
     
