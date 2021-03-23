@@ -14,13 +14,13 @@
 		060782C6250CEB0A00A87020 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C5250CEB0A00A87020 /* InfoViewController.swift */; };
 		060782C8250CEE5D00A87020 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C7250CEE5D00A87020 /* PostViewController.swift */; };
 		060782CA250CEE7200A87020 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782C9250CEE7200A87020 /* Post.swift */; };
-		1519BA0A25C4A93600D1B771 /* ModelPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519BA0925C4A93600D1B771 /* ModelPost.swift */; };
+		1519BA0A25C4A93600D1B771 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519BA0925C4A93600D1B771 /* ProfileModel.swift */; };
 		1519BA0E25C4AFB500D1B771 /* ProfileTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519BA0D25C4AFB500D1B771 /* ProfileTableHeaderView.swift */; };
 		1519BA1325C4B27000D1B771 /* ProfileMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519BA1225C4B27000D1B771 /* ProfileMainTableViewCell.swift */; };
 		152ABE3E25FB8007005A163E /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB57E625BB562F0009750F /* UIView.swift */; };
 		152ABE3F25FB8007005A163E /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B712B025C71BC70049C4D7 /* PhotosCollectionViewCell.swift */; };
 		152ABE4025FB8007005A163E /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B712A925C6FEFB0049C4D7 /* PhotosViewController.swift */; };
-		152ABE4125FB8007005A163E /* ModelPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519BA0925C4A93600D1B771 /* ModelPost.swift */; };
+		152ABE4125FB8007005A163E /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519BA0925C4A93600D1B771 /* ProfileModel.swift */; };
 		152ABE4225FB8007005A163E /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 060782B5250CE27700A87020 /* FeedViewController.swift */; };
 		152ABE4325FB8007005A163E /* ProfileMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1519BA1225C4B27000D1B771 /* ProfileMainTableViewCell.swift */; };
 		152ABE4425FB8007005A163E /* ProfileStackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F5365825C5E43800FE3E0E /* ProfileStackTableViewCell.swift */; };
@@ -41,6 +41,7 @@
 		1546C60E25BF75DC008B3528 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C60D25BF75DB008B3528 /* LoginViewController.swift */; };
 		1546C61F25C0D3ED008B3528 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C61E25C0D3ED008B3528 /* UIImage.swift */; };
 		1546C62625C0D954008B3528 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C62525C0D954008B3528 /* UIViewController.swift */; };
+		1558E282260AA1840011141C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E281260AA1840011141C /* ProfileViewModel.swift */; };
 		157D8166260805230008FA33 /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D8165260805230008FA33 /* FeedCoordinator.swift */; };
 		157D816A2608052C0008FA33 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D81692608052C0008FA33 /* ProfileCoordinator.swift */; };
 		157D8170260810300008FA33 /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D816F260810300008FA33 /* TabBarModel.swift */; };
@@ -66,7 +67,7 @@
 		060782C5250CEB0A00A87020 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		060782C7250CEE5D00A87020 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		060782C9250CEE7200A87020 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		1519BA0925C4A93600D1B771 /* ModelPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPost.swift; sourceTree = "<group>"; };
+		1519BA0925C4A93600D1B771 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		1519BA0D25C4AFB500D1B771 /* ProfileTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHeaderView.swift; sourceTree = "<group>"; };
 		1519BA1225C4B27000D1B771 /* ProfileMainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMainTableViewCell.swift; sourceTree = "<group>"; };
 		152ABE5925FB8007005A163E /* Navigation dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Navigation dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +76,7 @@
 		1546C60D25BF75DB008B3528 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1546C61E25C0D3ED008B3528 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		1546C62525C0D954008B3528 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		1558E281260AA1840011141C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		157D8165260805230008FA33 /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		157D81692608052C0008FA33 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		157D816F260810300008FA33 /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		1505CBCD260A9BBD001043FB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1519BA0925C4A93600D1B771 /* ProfileModel.swift */,
 				15F5365C25C5EDB100FE3E0E /* PhotosModel.swift */,
 			);
 			path = Models;
@@ -164,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				157D8174260818B70008FA33 /* PhotosViewModel.swift */,
+				1558E281260AA1840011141C /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -172,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				060782C9250CEE7200A87020 /* Post.swift */,
-				1519BA0925C4A93600D1B771 /* ModelPost.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -342,7 +345,7 @@
 				15BB57E725BB562F0009750F /* UIView.swift in Sources */,
 				15B712B125C71BC70049C4D7 /* PhotosCollectionViewCell.swift in Sources */,
 				15B712AA25C6FEFB0049C4D7 /* PhotosViewController.swift in Sources */,
-				1519BA0A25C4A93600D1B771 /* ModelPost.swift in Sources */,
+				1519BA0A25C4A93600D1B771 /* ProfileModel.swift in Sources */,
 				060782B6250CE27700A87020 /* FeedViewController.swift in Sources */,
 				1519BA1325C4B27000D1B771 /* ProfileMainTableViewCell.swift in Sources */,
 				15F5365925C5E43800FE3E0E /* ProfileStackTableViewCell.swift in Sources */,
@@ -352,6 +355,7 @@
 				060782CA250CEE7200A87020 /* Post.swift in Sources */,
 				157D8166260805230008FA33 /* FeedCoordinator.swift in Sources */,
 				15BB57E425BB51FD0009750F /* UIColor.swift in Sources */,
+				1558E282260AA1840011141C /* ProfileViewModel.swift in Sources */,
 				1546C62625C0D954008B3528 /* UIViewController.swift in Sources */,
 				15F5365D25C5EDB100FE3E0E /* PhotosModel.swift in Sources */,
 				15DC3EA12607FC7A00952B25 /* AppCoordinator.swift in Sources */,
@@ -372,7 +376,7 @@
 				152ABE3E25FB8007005A163E /* UIView.swift in Sources */,
 				152ABE3F25FB8007005A163E /* PhotosCollectionViewCell.swift in Sources */,
 				152ABE4025FB8007005A163E /* PhotosViewController.swift in Sources */,
-				152ABE4125FB8007005A163E /* ModelPost.swift in Sources */,
+				152ABE4125FB8007005A163E /* ProfileModel.swift in Sources */,
 				152ABE4225FB8007005A163E /* FeedViewController.swift in Sources */,
 				152ABE4325FB8007005A163E /* ProfileMainTableViewCell.swift in Sources */,
 				152ABE4425FB8007005A163E /* ProfileStackTableViewCell.swift in Sources */,

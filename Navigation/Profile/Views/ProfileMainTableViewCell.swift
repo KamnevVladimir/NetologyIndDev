@@ -1,7 +1,7 @@
 import UIKit
 
 final class ProfileMainTableViewCell: UITableViewCell {
-    var post: ModelPost? {
+    var post: ProfilePost? {
         didSet {
             guard let safePost = post else { return }
             titleLabel.text = safePost.author
