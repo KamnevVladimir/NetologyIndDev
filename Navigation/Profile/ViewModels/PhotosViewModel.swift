@@ -1,9 +1,9 @@
-//
-//  PhotosViewModel.swift
-//  Navigation
-//
-//  Created by Tsar on 22.03.2021.
-//  Copyright © 2021 Artem Novichkov. All rights reserved.
-//
+import UIKit
 
-import Foundation
+protocol PhotosViewOutput: class {
+    var photosModel: PhotosModel { get set }
+    func getPhotos() -> [UIImage]
+    func getPhotosCount() -> Int
+}
+
+

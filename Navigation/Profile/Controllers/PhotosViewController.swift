@@ -1,5 +1,9 @@
 import UIKit
 
+protocol PhotosViewInput: class {
+    
+}
+
 final class PhotosViewController: UIViewController {
     weak var coordinator: ProfileFlowCoordinator?
     
@@ -49,12 +53,12 @@ extension PhotosViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PostImages.images.count
+        return PhotosModel.images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PhotosCollectionViewCell.self), for: indexPath) as! PhotosCollectionViewCell
-        let image = PostImages.images[indexPath.item]
+        let image = PhotosModel.images[indexPath.item]
         
         cell.image = image
         return cell
@@ -80,4 +84,9 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 8
     }
+}
+
+//MARK: - PhotosViewInput
+extension PhotosViewController: PhotosViewInput {
+    
 }
