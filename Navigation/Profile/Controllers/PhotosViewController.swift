@@ -2,7 +2,7 @@ import UIKit
 
 final class PhotosViewController: UIViewController {
     weak var coordinator: ProfileFlowCoordinator?
-    weak var output: PhotosViewOutput?
+    private var output: PhotosViewOutput
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -15,6 +15,16 @@ final class PhotosViewController: UIViewController {
                                 forCellWithReuseIdentifier: String(describing: PhotosCollectionViewCell.self))
         return collectionView
     }()
+    
+    init(viewModel output: PhotosViewOutput) {
+        self.output = output
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) in PhotosViewController was called")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -50,10 +60,13 @@ extension PhotosViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PhotosModel.images.count
+        return output?.getPhotosCount() ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let output = output else {
+            <#statements#>
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PhotosCollectionViewCell.self), for: indexPath) as! PhotosCollectionViewCell
         let image = PhotosModel.images[indexPath.item]
         

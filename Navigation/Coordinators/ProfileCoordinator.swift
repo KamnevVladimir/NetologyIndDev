@@ -28,9 +28,9 @@ class ProfileCoordinator: ProfileFlowCoordinator {
     }
     
     func showPhotosVC() {
-        let photosProfileViewController = PhotosViewController()
+        let photosViewModel = PhotosViewModel()
+        let photosProfileViewController = PhotosViewController(viewModel: photosViewModel)
         photosProfileViewController.coordinator = self
-        photosProfileViewController.output = PhotosViewModel()
         
         navigationController.pushViewController(photosProfileViewController, animated: true)
     }
