@@ -9,8 +9,8 @@ final class ProfileViewController: UIViewController {
         tableView.backgroundColor = UIColor(red: 242, green: 242, blue: 247)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: String(describing: ProfileTableViewCell.self))
-        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
+        tableView.register(ProfileMainTableViewCell.self, forCellReuseIdentifier: String(describing: ProfileMainTableViewCell.self))
+        tableView.register(ProfileStackTableViewCell.self, forCellReuseIdentifier: String(describing: ProfileStackTableViewCell.self))
         tableView.register(ProfileTableHeaderView.self, forHeaderFooterViewReuseIdentifier: String(describing: ProfileTableHeaderView.self))
         return tableView
     }()
@@ -100,10 +100,10 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PhotosTableViewCell.self)) as! PhotosTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileStackTableViewCell.self)) as! ProfileStackTableViewCell
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileTableViewCell.self)) as! ProfileTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileMainTableViewCell.self)) as! ProfileMainTableViewCell
             
             cell.post = ProfilePosts.posts[indexPath.row]
             return cell

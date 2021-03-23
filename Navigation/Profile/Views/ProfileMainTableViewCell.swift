@@ -1,6 +1,6 @@
 import UIKit
 
-final class ProfileTableViewCell: UITableViewCell {
+final class ProfileMainTableViewCell: UITableViewCell {
     var post: ModelPost? {
         didSet {
             guard let safePost = post else { return }
