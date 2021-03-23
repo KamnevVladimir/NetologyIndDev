@@ -34,10 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.tabBar.items?[1].image = #imageLiteral(resourceName: "user")
         tabBarController.tabBar.items?[1].title = "Profile"
         
-        if let tabBarController = window?.rootViewController as? UITabBarController, let loginNavigationController = tabBarController.viewControllers?.last as? UINavigationController, let loginViewController = loginNavigationController.viewControllers.first as? LoginViewController {
-            loginViewController.delegate = AuthInspector()
-        }
-        
         return true
     }
 

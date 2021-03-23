@@ -9,12 +9,6 @@ protocol LoginViewControllerDelegate {
 //MARK: - LoginViewController
 final class LoginViewController: UIViewController {
     var delegate: LoginViewControllerDelegate?
-    
-    private lazy var logoImageView: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
-        imageView.toAutoLayout()
-        return imageView
-    }()
 
     private lazy var loginTextField: UITextField = {
         let textField = UITextField()
