@@ -1,11 +1,8 @@
 import UIKit
 
-protocol PhotosViewInput: class {
-    
-}
-
 final class PhotosViewController: UIViewController {
     weak var coordinator: ProfileFlowCoordinator?
+    weak var output: PhotosViewOutput?
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -84,9 +81,4 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 8
     }
-}
-
-//MARK: - PhotosViewInput
-extension PhotosViewController: PhotosViewInput {
-    
 }
