@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(type(of: self), #function)
         
         let feedNavigationController = UINavigationController(rootViewController: FeedViewController())
-        let profileNavigationController = UINavigationController(rootViewController: LoginViewController())
+        let loginNavigationController = UINavigationController(rootViewController: LoginViewController())
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [feedNavigationController, profileNavigationController]
+        tabBarController.viewControllers = [feedNavigationController, loginNavigationController]
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = tabBarController
@@ -33,6 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.tabBar.items?[0].title = "Feed"
         tabBarController.tabBar.items?[1].image = #imageLiteral(resourceName: "user")
         tabBarController.tabBar.items?[1].title = "Profile"
+        
+        if let tabBarController = window?.rootViewController as? UITabBarController, let loginNavigationController = tabBarController.viewControllers?.last as? UINavigationController, let loginViewController = loginNavigationController.viewControllers.first as? LoginViewController {
+            loginViewController.delegate = AuthInspector()
+        }
         
         return true
     }

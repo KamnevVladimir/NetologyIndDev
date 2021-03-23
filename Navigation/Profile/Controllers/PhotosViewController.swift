@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 
+
 final class PhotosViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
