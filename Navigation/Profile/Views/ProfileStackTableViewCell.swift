@@ -36,8 +36,18 @@ final class ProfileStackTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    private lazy var arrayPreviewImageViews: [PreviewImageView] = {
-        return [PreviewImageView]()
+    private lazy var imageView1 = PreviewImageView(frame: .zero)
+    private lazy var imageView2 = PreviewImageView(frame: .zero)
+    private lazy var imageView3 = PreviewImageView(frame: .zero)
+    private lazy var imageView4 = PreviewImageView(frame: .zero)
+    
+    private lazy var arrayImageView: [UIImageView] = {
+        var arrayImageView = [UIImageView]()
+        arrayImageView.append(imageView1)
+        arrayImageView.append(imageView2)
+        arrayImageView.append(imageView3)
+        arrayImageView.append(imageView4)
+        return arrayImageView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -52,14 +62,14 @@ final class ProfileStackTableViewCell: UITableViewCell {
     }
     
     private func setupViews() {
-//        guard let arrayPreviewImageViews = arrayPreviewImageViews else { return }
         contentView.addSubviews(titleStackView, previewStackView)
         titleStackView.addArrangedSubviews(titleLabel, detailedImage)
-        previewStackView.addArrayImageView(arrayPreviewImageViews)
+        for imageView in arrayImageView {
+            previewStackView.addArrangedSubview(imageView)
+        }
     }
     
     private func setupLayouts() {
-//        guard let arrayPreviewImageViews = arrayPreviewImageViews else { return }
         
         let constraints = [
             titleStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
@@ -74,28 +84,24 @@ final class ProfileStackTableViewCell: UITableViewCell {
             previewStackView.trailingAnchor.constraint(equalTo: titleStackView.trailingAnchor),
             previewStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
             
-            contentView.heightAnchor.constraint(equalToConstant: 150)
+            imageView1.widthAnchor.constraint(equalTo: imageView1.heightAnchor)
         ]
         
         NSLayoutConstraint.activate(constraints)
     }
     
     func takeStackImage(_ images: [UIImage?]) {
-        var stackImageView = [PreviewImageView]()
-        for image in images {
-            let previewImageView = PreviewImageView(image: image)
-            stackImageView.append(previewImageView)
+        for index in 0...images.count - 1 {
+            arrayImageView[index].image = images[index]
         }
-        
-        arrayPreviewImageViews = stackImageView
     }
 }
 
 final class PreviewImageView: UIImageView {
-    override init(image: UIImage?) {
-        super.init(image: image)
-        clipsToBounds = true
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         toAutoLayout()
+        clipsToBounds = true
         contentMode = .scaleAspectFill
         layer.cornerRadius = 6
     }
