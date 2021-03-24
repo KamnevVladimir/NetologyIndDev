@@ -1,7 +1,13 @@
 import UIKit
 
+protocol ProfileViewInput: class {
+    func deselectCell(indexPath: IndexPath)
+    func refreshData()
+}
+
 final class ProfileViewController: UIViewController {
     weak var coordinator: ProfileFlowCoordinator?
+    private var output: ProfileViewOutput
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -21,12 +27,22 @@ final class ProfileViewController: UIViewController {
         return view
     }()
     
+    init(viewModel output: ProfileViewOutput) {
+        self.output = output
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) in ProfileViewController called")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 242, green: 242, blue: 247)
         hideKeyboardWhenTappedAround()
         
         setupView()
+        refreshData()
     }
     
     private func setupView() {
@@ -57,14 +73,7 @@ final class ProfileViewController: UIViewController {
 //MARK: - TableViewDelegate
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 0:
-            coordinator?.showPhotosVC()
-        default:
-            tableView.deselectRow(at: indexPath, animated: true)
-            return
-        }
-        
+        output.onTableViewTap(indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -85,27 +94,26 @@ extension ProfileViewController: UITableViewDelegate {
 //MARK: - TableViewDataSource
 extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return output.getNumberOfSections()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        default:
-            return ProfilePosts.posts.count
-        }
+        return output.getNumbersOfRows(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let post = output.getPost(indexPath: indexPath)
+        
         switch indexPath.section {
         case 0:
+
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileStackTableViewCell.self)) as! ProfileStackTableViewCell
+            cell.takeStackImage(post.imageStack)
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileMainTableViewCell.self)) as! ProfileMainTableViewCell
-            
-            cell.post = ProfilePosts.posts[indexPath.row]
+           
+            cell.takePost(title: post.title, description: post.description, image: post.image, likes: post.likes, views: post.views)
             return cell
         }
     }
@@ -115,6 +123,16 @@ extension ProfileViewController: UITableViewDataSource {
         guard section == 0 else { return nil }
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: ProfileTableHeaderView.self)) as! ProfileTableHeaderView
         return headerView
+    }
+}
+
+extension ProfileViewController: ProfileViewInput {
+    func deselectCell(indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func refreshData() {
+        tableView.reloadData()
     }
 }
 

@@ -13,25 +13,32 @@ class ProfileCoordinator: ProfileFlowCoordinator {
     }
     
     func start() {
-        let loginViewController = LoginViewController()
-        loginViewController.coordinator = self
-        loginViewController.tabBarItem = TabBarModel.items[.profile]
+        let controller = LoginViewController()
+        controller.coordinator = self
+        controller.tabBarItem = TabBarModel.items[.profile]
         
-        navigationController.pushViewController(loginViewController, animated: false)
+        navigationController.pushViewController(controller, animated: false)
     }
     
     func showProfileVC() {
-        let profileViewController = ProfileViewController()
-        profileViewController.coordinator = self
+        let viewModel = ProfileViewModel()
+        let controller = ProfileViewController(viewModel: viewModel)
+        controller.coordinator = self
+        viewModel.viewInput = controller
+        viewModel.onCellTap = { [weak self] in
+            guard let self = self else { return }
+            self.showPhotosVC()
+        }
+        
 
-        navigationController.pushViewController(profileViewController, animated: true)
+        navigationController.pushViewController(controller, animated: true)
     }
     
     func showPhotosVC() {
-        let photosViewModel = PhotosViewModel()
-        let photosProfileViewController = PhotosViewController(viewModel: photosViewModel)
-        photosProfileViewController.coordinator = self
+        let viewModel = PhotosViewModel()
+        let controller = PhotosViewController(viewModel: viewModel)
+        controller.coordinator = self
         
-        navigationController.pushViewController(photosProfileViewController, animated: true)
+        navigationController.pushViewController(controller, animated: true)
     }
 }

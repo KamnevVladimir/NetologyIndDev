@@ -1,17 +1,6 @@
 import UIKit
 
 final class ProfileMainTableViewCell: UITableViewCell {
-    var post: ProfilePost? {
-        didSet {
-            guard let safePost = post else { return }
-            titleLabel.text = safePost.author
-            postImageView.image = UIImage(named: safePost.image)
-            descriptionLabel.text = safePost.description
-            likesLabel.text = "Likes: " + String(safePost.likes)
-            viewsLabel.text = "Views: " + String(safePost.views)
-        }
-    }
-    ///
     private lazy var titleLabel: UILabel = {
         let title = UILabel()
         title.toAutoLayout()
@@ -106,5 +95,13 @@ final class ProfileMainTableViewCell: UITableViewCell {
         ]
         
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    func takePost(title: String, description: String, image: UIImage?, likes: Int, views: Int) {
+        titleLabel.text = title
+        descriptionLabel.text = description
+        postImageView.image = image
+        likesLabel.text = "Likes: \(likes)"
+        viewsLabel.text = "Views: \(views)"
     }
 }
