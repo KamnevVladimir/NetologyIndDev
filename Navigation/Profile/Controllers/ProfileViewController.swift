@@ -94,7 +94,7 @@ extension ProfileViewController: UITableViewDelegate {
 //MARK: - TableViewDataSource
 extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return output.getNumberOfSections()
+        return output.numberOfSections
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -108,12 +108,12 @@ extension ProfileViewController: UITableViewDataSource {
         case 0:
 
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileStackTableViewCell.self)) as! ProfileStackTableViewCell
-            cell.takeStackImage(post.imageStack)
+            cell.takeStackImage(post: post)
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProfileMainTableViewCell.self)) as! ProfileMainTableViewCell
            
-            cell.takePost(title: post.title, description: post.description, image: post.image, likes: post.likes, views: post.views)
+            cell.takePost(post: post)
             return cell
         }
     }

@@ -90,9 +90,10 @@ final class ProfileStackTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate(constraints)
     }
     
-    func takeStackImage(_ images: [UIImage?]) {
-        for index in 0...images.count - 1 {
-            arrayImageView[index].image = images[index]
+    func takeStackImage(post: ProfilePost) {
+        for index in 0...post.imageStack.count - 1 {
+            let image = UIImage(named: post.imageStack[index])
+            arrayImageView[index].image = image
         }
     }
 }

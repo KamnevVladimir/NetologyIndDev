@@ -97,11 +97,11 @@ final class ProfileMainTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate(constraints)
     }
     
-    func takePost(title: String, description: String, image: UIImage?, likes: Int, views: Int) {
-        titleLabel.text = title
-        descriptionLabel.text = description
-        postImageView.image = image
-        likesLabel.text = "Likes: \(likes)"
-        viewsLabel.text = "Views: \(views)"
+    func takePost(post: ProfilePost) {
+        titleLabel.text = post.author
+        descriptionLabel.text = post.description
+        postImageView.image = UIImage(named: post.image)
+        likesLabel.text = "Likes: \(post.likes)"
+        viewsLabel.text = "Views: \(post.views)"
     }
 }
