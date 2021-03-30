@@ -1,17 +1,20 @@
 import UIKit
 
-protocol FeedFlowCoordinator: ChildCoordinator {
+protocol FeedFlowCoordinator: Coordinator {
     func showPostVC(post: Post)
 }
 
 class FeedCoordinator: FeedFlowCoordinator {
-    var navigationController: UINavigationController
+    var controller: UIViewController
+    var childCoordinators: [Coordinator]
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(controller: UIViewController, childCoordinators: [Coordinator] = []) {
+        self.controller = controller
+        self.childCoordinators = childCoordinators
     }
     
     func start() {
+        guard let navigationController = controller as? UINavigationController else { return }
         let feedViewController = FeedViewController()
         feedViewController.coordinator = self
         feedViewController.tabBarItem = TabBarModel.items[.feed]
@@ -20,6 +23,7 @@ class FeedCoordinator: FeedFlowCoordinator {
     }
     
     func showPostVC(post: Post) {
+        guard let navigationController = controller as? UINavigationController else { return }
         let postViewController = PostViewController()
         postViewController.coordinator = self
         postViewController.post = post

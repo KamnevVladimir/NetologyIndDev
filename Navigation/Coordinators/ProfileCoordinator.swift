@@ -1,44 +1,49 @@
 import UIKit
 
-protocol ProfileFlowCoordinator: ChildCoordinator {
+protocol ProfileFlowCoordinator: Coordinator {
     func showProfileVC()
     func showPhotosVC()
 }
 
 class ProfileCoordinator: ProfileFlowCoordinator {
-    var navigationController: UINavigationController
+    var controller: UIViewController
+    var childCoordinators: [Coordinator]
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(controller: UIViewController, childCoordinators: [Coordinator] = []) {
+        self.controller = controller
+        self.childCoordinators = childCoordinators
     }
     
     func start() {
-        let controller = LoginViewController()
-        controller.coordinator = self
-        controller.tabBarItem = TabBarModel.items[.profile]
+        guard let navigationController = controller as? UINavigationController else { return }
+        let viewController = LoginViewController()
+        viewController.coordinator = self
+        viewController.tabBarItem = TabBarModel.items[.profile]
         
-        navigationController.pushViewController(controller, animated: false)
+        navigationController.pushViewController(viewController, animated: false)
     }
     
     func showProfileVC() {
+        guard let navigationController = controller as? UINavigationController else { return }
         let viewModel = ProfileViewModel()
-        let controller = ProfileViewController(viewModel: viewModel)
-        controller.coordinator = self
-        viewModel.viewInput = controller
+        let viewController = ProfileViewController(viewModel: viewModel)
+        viewController.coordinator = self
+        viewModel.viewInput = viewController
         viewModel.onCellTap = { [weak self] in
             guard let self = self else { return }
             self.showPhotosVC()
         }
         
 
-        navigationController.pushViewController(controller, animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func showPhotosVC() {
+        guard let navigationController = controller as? UINavigationController else { return }
         let viewModel = PhotosViewModel()
-        let controller = PhotosViewController(viewModel: viewModel)
-        controller.coordinator = self
+        let viewController = PhotosViewController(viewModel: viewModel)
+        viewController.coordinator = self
         
-        navigationController.pushViewController(controller, animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
 }

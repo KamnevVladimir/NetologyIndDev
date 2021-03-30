@@ -1,34 +1,30 @@
 import UIKit
 
 // Интерфейс основного координатор
-protocol BaseCoordinator: class {
-    var childCoordinators: [ChildCoordinator] { get set }
-    var tabBarController: UITabBarController { get set }
+protocol Coordinator: class {
+    var childCoordinators: [Coordinator] { get set }
+    var controller: UIViewController { get set }
     
     func start()
 }
 
 // Flow - координаторы. Определяют стеки UINavigationController
-protocol ChildCoordinator: class {
-    var navigationController: UINavigationController { get set }
-    
-    func start()
-}
 
 // Основной координатор, отвечает за UITabBarController
-class AppCoordinator: BaseCoordinator {
-    var tabBarController: UITabBarController
-    var childCoordinators: [ChildCoordinator]
+class AppCoordinator: Coordinator {
+    var controller: UIViewController
+    var childCoordinators: [Coordinator]
     
-    init(tabBarController: UITabBarController, childCoordinators: [ChildCoordinator] = []) {
-        self.tabBarController = tabBarController
+    init(controller: UIViewController, childCoordinators: [Coordinator] = []) {
+        self.controller = controller
         self.childCoordinators = childCoordinators
     }
     
     func start() {
+        guard let tabBarController = controller as? UITabBarController else { return }
         var navigationControllers = [UINavigationController]()
         for coordinator in childCoordinators {
-            navigationControllers.append(coordinator.navigationController)
+            navigationControllers.append(coordinator.controller as! UINavigationController)
             coordinator.start()
         }
         

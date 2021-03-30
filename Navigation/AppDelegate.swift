@@ -20,14 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print(type(of: self), #function)
         
-        let feedCoordinator = FeedCoordinator(navigationController: UINavigationController())
-        let profileCoordinator = ProfileCoordinator(navigationController: UINavigationController())
+        let feedCoordinator = FeedCoordinator(controller: UINavigationController())
+        let profileCoordinator = ProfileCoordinator(controller: UINavigationController())
         
-        appCoordinator = AppCoordinator(tabBarController: UITabBarController(), childCoordinators: [feedCoordinator, profileCoordinator])
+        appCoordinator = AppCoordinator(controller: UITabBarController(), childCoordinators: [feedCoordinator, profileCoordinator])
         appCoordinator?.start()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = appCoordinator?.tabBarController
+        window?.rootViewController = appCoordinator?.controller
         window?.makeKeyAndVisible()
         
         return true
