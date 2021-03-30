@@ -5,14 +5,16 @@ import SnapKit
 final class PhotosViewController: UIViewController {
     weak var coordinator: ProfileFlowCoordinator?
     private var output: PhotosViewOutput
+    private var timer: Timer?
     
-    private var timerLabel: UILabel = {
+    private lazy var timerLabel: UILabel = {
         let label = UILabel()
-        label.text = "Экран закроется через:"
+        label.text = "Экран закроется через: \(count) секунд"
         label.font = UIFont.systemFont(ofSize: 18)
         label.textColor = .darkGray
         return label
     }()
+    private var count = 10
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -40,6 +42,7 @@ final class PhotosViewController: UIViewController {
         title = "MemeCats Gallery"
         setupViews()
         setupLayouts()
+        setupTimer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +51,7 @@ final class PhotosViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
+        timer?.invalidate()
     }
     
     private func setupViews() {
@@ -63,6 +67,21 @@ final class PhotosViewController: UIViewController {
             make.top.equalTo(timerLabel.snp.bottom).offset(10)
             make.leading.trailing.bottom.equalToSuperview()
         }
+    }
+    
+    private func setupTimer() {
+        timer = Timer(timeInterval: 1, repeats: true) {[weak self] _ in
+            guard let self = self else { return }
+            
+            if self.count > 0 {
+                self.timerLabel.text = "Экран закроется через: \(self.count) секунд"
+                self.count -= 1
+            } else if self.count == 0 {
+                self.coordinator?.popVC()
+            }
+        }
+        
+        RunLoop.current.add(timer!, forMode: .default)
     }
 }
 

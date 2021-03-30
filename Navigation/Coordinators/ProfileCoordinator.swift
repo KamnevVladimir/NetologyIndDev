@@ -3,6 +3,7 @@ import UIKit
 protocol ProfileFlowCoordinator: Coordinator {
     func showProfileVC()
     func showPhotosVC()
+    func popVC()
 }
 
 class ProfileCoordinator: ProfileFlowCoordinator {
@@ -45,5 +46,10 @@ class ProfileCoordinator: ProfileFlowCoordinator {
         viewController.coordinator = self
         
         navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func popVC() {
+        guard let navigationController = controller as? UINavigationController else { return }
+        navigationController.popViewController(animated: true)
     }
 }
