@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -42,6 +42,7 @@
 		1546C61F25C0D3ED008B3528 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C61E25C0D3ED008B3528 /* UIImage.swift */; };
 		1546C62625C0D954008B3528 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1546C62525C0D954008B3528 /* UIViewController.swift */; };
 		1558E282260AA1840011141C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1558E281260AA1840011141C /* ProfileViewModel.swift */; };
+		157D16C52613B68C00A2D372 /* RunLoopText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D16C42613B68C00A2D372 /* RunLoopText.swift */; };
 		157D8166260805230008FA33 /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D8165260805230008FA33 /* FeedCoordinator.swift */; };
 		157D816A2608052C0008FA33 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D81692608052C0008FA33 /* ProfileCoordinator.swift */; };
 		157D8170260810300008FA33 /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D816F260810300008FA33 /* TabBarModel.swift */; };
@@ -79,6 +80,7 @@
 		1546C61E25C0D3ED008B3528 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		1546C62525C0D954008B3528 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		1558E281260AA1840011141C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		157D16C42613B68C00A2D372 /* RunLoopText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunLoopText.swift; sourceTree = "<group>"; };
 		157D8165260805230008FA33 /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		157D81692608052C0008FA33 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		157D816F260810300008FA33 /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				060782BF250CE27A00A87020 /* Info.plist */,
 				1519BA0625C4A8BC00D1B771 /* Feed */,
 				157D816F260810300008FA33 /* TabBarModel.swift */,
+				157D16C42613B68C00A2D372 /* RunLoopText.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -265,7 +268,6 @@
 				9BC77A79D2FC6FABEF06B7AF /* Pods-Navigation.debug.xcconfig */,
 				C7E364C2ADF4B0DFEB4B5D37 /* Pods-Navigation.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -424,6 +426,7 @@
 				060782CA250CEE7200A87020 /* Post.swift in Sources */,
 				157D8166260805230008FA33 /* FeedCoordinator.swift in Sources */,
 				15BB57E425BB51FD0009750F /* UIColor.swift in Sources */,
+				157D16C52613B68C00A2D372 /* RunLoopText.swift in Sources */,
 				1558E282260AA1840011141C /* ProfileViewModel.swift in Sources */,
 				1546C62625C0D954008B3528 /* UIViewController.swift in Sources */,
 				15F5365D25C5EDB100FE3E0E /* PhotosModel.swift in Sources */,
