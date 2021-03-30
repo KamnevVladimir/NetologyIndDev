@@ -7,16 +7,21 @@
 //
 
 import UIKit
+import SnapKit
 
 final class FeedViewController: UIViewController {
     weak var coordinator: FeedFlowCoordinator?
     let post: Post = Post(title: "Пост")
-    var onTap: (() -> Void)?
-    var output: FeedViewOutput
+    
+    private lazy var postButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Show post", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        button.addTarget(self, action: #selector(postButtonTapped), for: .touchUpInside)
+        return button
+    }()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        output = PostPresenter()
-        onTap = output.showPost
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         print(type(of: self), #function)
     }
@@ -31,6 +36,7 @@ final class FeedViewController: UIViewController {
         
         title = "Feed"
         setupViews()
+        setupLayouts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,24 +69,15 @@ final class FeedViewController: UIViewController {
         print(type(of: self), #function)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "post" else {
-            return
+    private func setupLayouts() {
+        postButton.snp.makeConstraints { make in
+            make.center.equalToSuperview()
         }
-        guard let postViewController = segue.destination as? PostViewController else {
-            return
-        }
-        postViewController.post = post
     }
     
     private func setupViews() {
         view.backgroundColor = UIColor.systemGreen
-        
-        output.navigationController = navigationController
-        
-        let feedContainerView = FeedContainerView(frame: view.frame)
-        feedContainerView.onTap = onTap
-        view.addSubview(feedContainerView)
+        view.addSubview(postButton)
     }
     
     @objc private func postButtonTapped() {
@@ -88,7 +85,3 @@ final class FeedViewController: UIViewController {
     }
 }
 
-protocol FeedViewOutput: class {
-    var navigationController: UINavigationController? { get set }
-    func showPost()
-}

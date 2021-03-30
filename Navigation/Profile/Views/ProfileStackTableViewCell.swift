@@ -81,8 +81,8 @@ final class ProfileStackTableViewCell: UITableViewCell {
             make.bottom.equalToSuperview().inset(12)
         }
         
-        arrayPreviewImageViews[0].snp.makeConstraints { (make) in
-            make.height.equalTo(arrayPreviewImageViews[0].snp.width)
+        arrayImageView[0].snp.makeConstraints { (make) in
+            make.height.equalTo(arrayImageView[0].snp.width)
         }
     }
     

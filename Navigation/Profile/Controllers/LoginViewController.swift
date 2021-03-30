@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 //MARK: - LoginViewControllerDelegate
 protocol LoginViewControllerDelegate {
@@ -10,11 +11,6 @@ protocol LoginViewControllerDelegate {
 final class LoginViewController: UIViewController {
     weak var coordinator: ProfileFlowCoordinator?
     
-    private lazy var logoImageView: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
-        imageView.toAutoLayout()
-        return imageView
-    }()
     private lazy var loginTextField: UITextField = {
         let textField = UITextField()
         let rectangle = CGRect(x: 0, y: 0, width: 10, height: 30)

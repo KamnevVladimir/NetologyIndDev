@@ -1,16 +1,6 @@
 import UIKit
 
 final class ProfileMainTableViewCell: UITableViewCell {
-    var post: ModelPost? {
-        didSet {
-            guard let safePost = post else { return }
-            titleLabel.text = safePost.author
-            postImageView.image = UIImage(named: safePost.image)
-            descriptionLabel.text = safePost.description
-            likesLabel.text = "Likes: " + String(safePost.likes)
-            viewsLabel.text = "Views: " + String(safePost.views)
-        }
-    }
 
     private lazy var titleLabel: UILabel = {
         let title = UILabel()

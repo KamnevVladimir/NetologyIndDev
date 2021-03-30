@@ -7,13 +7,12 @@
 //
 
 import UIKit
-
+import SnapKit
 
 final class InfoViewController: UIViewController {
 
     private lazy var alertButton: UIButton = {
         let button = UIButton(type: .system)
-        button.toAutoLayout()
         button.setTitle("Show alert", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.addTarget(self, action: #selector(alertButtonTapped), for: .touchUpInside)
@@ -28,12 +27,9 @@ final class InfoViewController: UIViewController {
     }
     
     private func setupLayouts() {
-        let constraints = [
-            alertButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            alertButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ]
-        
-        NSLayoutConstraint.activate(constraints)
+        alertButton.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
     
     private func setupViews() {
