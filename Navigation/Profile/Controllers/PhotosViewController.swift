@@ -80,8 +80,9 @@ final class PhotosViewController: UIViewController {
                 self.coordinator?.popVC()
             }
         }
-        
-        RunLoop.current.add(timer!, forMode: .default)
+        // Заметили, что при режиме .default RunLoop не реагирует на timer, когда RunLoop переходит в режим event tracking.
+        // Ставим режим common, который группирует режимы default, modal, event tracking.
+        RunLoop.current.add(timer!, forMode: .common)
     }
 }
 
