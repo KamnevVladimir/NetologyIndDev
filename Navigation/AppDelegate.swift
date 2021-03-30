@@ -15,24 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var backgroundTask: UIBackgroundTaskIdentifier = .invalid
     var timer: Timer?
     var timerCount = 0.0
+    var appCoordinator: AppCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print(type(of: self), #function)
         
-        let feedNavigationController = UINavigationController(rootViewController: FeedViewController())
-        let loginNavigationController = UINavigationController(rootViewController: LoginViewController())
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [feedNavigationController, loginNavigationController]
+
+        let feedCoordinator = FeedCoordinator(controller: UINavigationController())
+        let profileCoordinator = ProfileCoordinator(controller: UINavigationController())
+        
+        appCoordinator = AppCoordinator(controller: UITabBarController(), childCoordinators: [feedCoordinator, profileCoordinator])
+        appCoordinator?.start()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = tabBarController
+        window?.rootViewController = appCoordinator?.controller
         window?.makeKeyAndVisible()
-        
-        // Setup title and icons within UITabBarController
-        tabBarController.tabBar.items?[0].image = #imageLiteral(resourceName: "home-page")
-        tabBarController.tabBar.items?[0].title = "Feed"
-        tabBarController.tabBar.items?[1].image = #imageLiteral(resourceName: "user")
-        tabBarController.tabBar.items?[1].title = "Profile"
         
         return true
     }

@@ -1,6 +1,6 @@
 import UIKit
 
-final class ProfileTableViewCell: UITableViewCell {
+final class ProfileMainTableViewCell: UITableViewCell {
     var post: ModelPost? {
         didSet {
             guard let safePost = post else { return }
@@ -95,5 +95,13 @@ final class ProfileTableViewCell: UITableViewCell {
             make.leading.trailing.equalTo(titleLabel)
             make.bottom.equalToSuperview().inset(16)
         }
+    }
+    
+    func takePost(post: ProfilePost) {
+        titleLabel.text = post.author
+        descriptionLabel.text = post.description
+        postImageView.image = UIImage(named: post.image)
+        likesLabel.text = "Likes: \(post.likes)"
+        viewsLabel.text = "Views: \(post.views)"
     }
 }

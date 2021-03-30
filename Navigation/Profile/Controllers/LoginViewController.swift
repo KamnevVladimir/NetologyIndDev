@@ -8,8 +8,13 @@ protocol LoginViewControllerDelegate {
 
 //MARK: - LoginViewController
 final class LoginViewController: UIViewController {
-    var delegate: LoginViewControllerDelegate?
-
+    weak var coordinator: ProfileFlowCoordinator?
+    
+    private lazy var logoImageView: UIImageView = {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
+        imageView.toAutoLayout()
+        return imageView
+    }()
     private lazy var loginTextField: UITextField = {
         let textField = UITextField()
         let rectangle = CGRect(x: 0, y: 0, width: 10, height: 30)
@@ -115,9 +120,7 @@ final class LoginViewController: UIViewController {
 
     
     @objc private func loginButtonPressed() {
-        let profileViewController = ProfileViewController()
-        
-        navigationController?.pushViewController(profileViewController, animated: true)
+        coordinator?.showProfileVC()
     }
     
     private func setupViews() {

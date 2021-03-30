@@ -9,7 +9,7 @@
 import UIKit
 
 final class FeedViewController: UIViewController {
-    
+    weak var coordinator: FeedFlowCoordinator?
     let post: Post = Post(title: "Пост")
     var onTap: (() -> Void)?
     var output: FeedViewOutput
@@ -84,9 +84,7 @@ final class FeedViewController: UIViewController {
     }
     
     @objc private func postButtonTapped() {
-        let postViewController = PostViewController()
-        postViewController.post = post
-        navigationController?.pushViewController(postViewController, animated: true)
+        coordinator?.showPostVC(post: post)
     }
 }
 
