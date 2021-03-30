@@ -6,6 +6,14 @@ final class PhotosViewController: UIViewController {
     weak var coordinator: ProfileFlowCoordinator?
     private var output: PhotosViewOutput
     
+    private var timerLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Экран закроется через:"
+        label.font = UIFont.systemFont(ofSize: 18)
+        label.textColor = .darkGray
+        return label
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -31,15 +39,7 @@ final class PhotosViewController: UIViewController {
         view.backgroundColor = .white
         title = "MemeCats Gallery"
         setupViews()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-
-        collectionView.frame = CGRect(x: .zero,
-                                      y: view.safeAreaInsets.top,
-                                      width: view.bounds.width,
-                                      height: view.bounds.height - view.safeAreaInsets.top)
+        setupLayouts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +51,18 @@ final class PhotosViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.addSubview(collectionView)
+        view.addSubviews(collectionView, timerLabel)
+    }
+    
+    private func setupLayouts() {
+        timerLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(timerLabel.snp.bottom).offset(10)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
     }
 }
 
