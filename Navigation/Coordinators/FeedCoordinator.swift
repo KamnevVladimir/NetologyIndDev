@@ -2,6 +2,7 @@ import UIKit
 
 protocol FeedFlowCoordinator: Coordinator {
     func showPostVC(post: Post)
+    func popVC()
 }
 
 class FeedCoordinator: FeedFlowCoordinator {
@@ -29,5 +30,10 @@ class FeedCoordinator: FeedFlowCoordinator {
         postViewController.post = post
         
         navigationController.pushViewController(postViewController, animated: true)
+    }
+    
+    func popVC() {
+        guard let navigationController = controller as? UINavigationController else { return }
+        navigationController.popViewController(animated: true)
     }
 }
