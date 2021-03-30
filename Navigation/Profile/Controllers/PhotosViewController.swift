@@ -1,4 +1,6 @@
 import UIKit
+import SnapKit
+
 
 final class PhotosViewController: UIViewController {
     weak var coordinator: ProfileFlowCoordinator?
@@ -7,7 +9,6 @@ final class PhotosViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.toAutoLayout()
         collectionView.backgroundColor = .white
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -34,7 +35,7 @@ final class PhotosViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
+
         collectionView.frame = CGRect(x: .zero,
                                       y: view.safeAreaInsets.top,
                                       width: view.bounds.width,

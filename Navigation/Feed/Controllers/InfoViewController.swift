@@ -8,8 +8,9 @@
 
 import UIKit
 
-class InfoViewController: UIViewController {
-    
+
+final class InfoViewController: UIViewController {
+
     private lazy var alertButton: UIButton = {
         let button = UIButton(type: .system)
         button.toAutoLayout()

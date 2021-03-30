@@ -4,7 +4,6 @@ final class ProfileStackTableViewCell: UITableViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.toAutoLayout()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.text = "Photos"
@@ -13,7 +12,6 @@ final class ProfileStackTableViewCell: UITableViewCell {
     
     private lazy var detailedImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.toAutoLayout()
         imageView.image = #imageLiteral(resourceName: "right-arrow")
         imageView.tintColor = .black
         return imageView
@@ -21,7 +19,6 @@ final class ProfileStackTableViewCell: UITableViewCell {
 
     private lazy var titleStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.toAutoLayout()
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
         return stackView
@@ -29,7 +26,6 @@ final class ProfileStackTableViewCell: UITableViewCell {
     
     private lazy var previewStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.toAutoLayout()
         stackView.axis = .horizontal
         stackView.spacing = 8
         stackView.distribution = .fillEqually
@@ -70,24 +66,24 @@ final class ProfileStackTableViewCell: UITableViewCell {
     }
     
     private func setupLayouts() {
+
+        titleStackView.snp.makeConstraints { (make) in
+            make.top.leading.trailing.equalToSuperview().inset(12)
+        }
         
-        let constraints = [
-            titleStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            titleStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
-            titleStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            
-            detailedImage.heightAnchor.constraint(equalToConstant: 25),
-            detailedImage.widthAnchor.constraint(equalTo: detailedImage.heightAnchor),
-            
-            previewStackView.topAnchor.constraint(equalTo: titleStackView.bottomAnchor, constant: 12),
-            previewStackView.leadingAnchor.constraint(equalTo: titleStackView.leadingAnchor),
-            previewStackView.trailingAnchor.constraint(equalTo: titleStackView.trailingAnchor),
-            previewStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
-            
-            imageView1.widthAnchor.constraint(equalTo: imageView1.heightAnchor)
-        ]
+        detailedImage.snp.makeConstraints { (make) in
+            make.size.equalTo(25)
+        }
         
-        NSLayoutConstraint.activate(constraints)
+        previewStackView.snp.makeConstraints { (make) in
+            make.leading.trailing.equalTo(titleStackView)
+            make.top.equalTo(titleStackView.snp.bottom).inset(-12)
+            make.bottom.equalToSuperview().inset(12)
+        }
+        
+        arrayPreviewImageViews[0].snp.makeConstraints { (make) in
+            make.height.equalTo(arrayPreviewImageViews[0].snp.width)
+        }
     }
     
     func takeStackImage(post: ProfilePost) {
@@ -98,7 +94,7 @@ final class ProfileStackTableViewCell: UITableViewCell {
     }
 }
 
-final class PreviewImageView: UIImageView {
+private final class PreviewImageView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         toAutoLayout()
