@@ -1,6 +1,8 @@
 import UIKit
 
 final class LoginViewController: UIViewController {
+    weak var coordinator: ProfileFlowCoordinator?
+    
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
         imageView.toAutoLayout()
@@ -121,9 +123,7 @@ final class LoginViewController: UIViewController {
 
     
     @objc private func loginButtonPressed() {
-        let profileViewController = ProfileViewController()
-        
-        navigationController?.pushViewController(profileViewController, animated: true)
+        coordinator?.showProfileVC()
     }
     
     private func setupViews() {

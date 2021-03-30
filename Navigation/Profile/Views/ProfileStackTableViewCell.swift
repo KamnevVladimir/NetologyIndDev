@@ -1,6 +1,6 @@
 import UIKit
 
-final class PhotosTableViewCell: UITableViewCell {
+final class ProfileStackTableViewCell: UITableViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -36,14 +36,18 @@ final class PhotosTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    private lazy var arrayPreviewImageViews: [PreviewImageView] = {
-        var previewImageView1 = PreviewImageView(image: PostImages.images[0])
-        var previewImageView2 = PreviewImageView(image: PostImages.images[1])
-        var previewImageView3 = PreviewImageView(image: PostImages.images[2])
-        var previewImageView4 = PreviewImageView(image: PostImages.images[3])
-        
-        let arrayImageViews = [previewImageView1, previewImageView2, previewImageView3, previewImageView4]
-        return arrayImageViews
+    private lazy var imageView1 = PreviewImageView(frame: .zero)
+    private lazy var imageView2 = PreviewImageView(frame: .zero)
+    private lazy var imageView3 = PreviewImageView(frame: .zero)
+    private lazy var imageView4 = PreviewImageView(frame: .zero)
+    
+    private lazy var arrayImageView: [UIImageView] = {
+        var arrayImageView = [UIImageView]()
+        arrayImageView.append(imageView1)
+        arrayImageView.append(imageView2)
+        arrayImageView.append(imageView3)
+        arrayImageView.append(imageView4)
+        return arrayImageView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -60,10 +64,13 @@ final class PhotosTableViewCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubviews(titleStackView, previewStackView)
         titleStackView.addArrangedSubviews(titleLabel, detailedImage)
-        previewStackView.addArrayImageView(arrayPreviewImageViews)
+        for imageView in arrayImageView {
+            previewStackView.addArrangedSubview(imageView)
+        }
     }
     
     private func setupLayouts() {
+        
         let constraints = [
             titleStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             titleStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
@@ -77,18 +84,25 @@ final class PhotosTableViewCell: UITableViewCell {
             previewStackView.trailingAnchor.constraint(equalTo: titleStackView.trailingAnchor),
             previewStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
             
-            arrayPreviewImageViews[0].heightAnchor.constraint(equalTo: arrayPreviewImageViews[0].widthAnchor)
+            imageView1.widthAnchor.constraint(equalTo: imageView1.heightAnchor)
         ]
         
         NSLayoutConstraint.activate(constraints)
     }
+    
+    func takeStackImage(post: ProfilePost) {
+        for index in 0...post.imageStack.count - 1 {
+            let image = UIImage(named: post.imageStack[index])
+            arrayImageView[index].image = image
+        }
+    }
 }
 
-class PreviewImageView: UIImageView {
-    override init(image: UIImage?) {
-        super.init(image: image)
-        clipsToBounds = true
+final class PreviewImageView: UIImageView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         toAutoLayout()
+        clipsToBounds = true
         contentMode = .scaleAspectFill
         layer.cornerRadius = 6
     }

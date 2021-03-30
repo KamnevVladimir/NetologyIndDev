@@ -1,6 +1,8 @@
 import UIKit
 
 final class PhotosViewController: UIViewController {
+    weak var coordinator: ProfileFlowCoordinator?
+    private var output: PhotosViewOutput
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -13,6 +15,16 @@ final class PhotosViewController: UIViewController {
                                 forCellWithReuseIdentifier: String(describing: PhotosCollectionViewCell.self))
         return collectionView
     }()
+    
+    init(viewModel output: PhotosViewOutput) {
+        self.output = output
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) in PhotosViewController was called")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -44,18 +56,16 @@ final class PhotosViewController: UIViewController {
 
 extension PhotosViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return output.getSectionsCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PostImages.images.count
+        return output.getPhotosCount(section: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PhotosCollectionViewCell.self), for: indexPath) as! PhotosCollectionViewCell
-        let image = PostImages.images[indexPath.item]
-        
-        cell.image = image
+        cell.image = output.getPhotos(section: indexPath.section)[indexPath.item]
         return cell
     }
     
