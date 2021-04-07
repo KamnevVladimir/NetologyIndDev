@@ -34,7 +34,7 @@ class ProfileCoordinator: ProfileFlowCoordinator {
             self.showPhotosVC()
         }
         
-
+        
         navigationController.pushViewController(viewController, animated: true)
     }
     

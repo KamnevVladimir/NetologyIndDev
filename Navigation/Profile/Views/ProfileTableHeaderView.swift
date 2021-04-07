@@ -1,9 +1,10 @@
 import UIKit
 
 final class ProfileTableHeaderView: UITableViewHeaderFooterView {
+    var controller: ProfileViewController?
     
     private lazy var profileImageView: UIImageView = {
-        let image = UIImageView(image: UIImage(named: "cat.jpg"))
+        let image = UIImageView()
         image.layer.borderColor = UIColor.white.cgColor
         image.layer.borderWidth = 3
         image.contentMode = .scaleAspectFit
@@ -69,6 +70,17 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
         super.init(coder: coder)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // Задание 4
+        /// Допустим, наше приложение жестко завязано на аватаре пользователя.
+        /// Тогда невозможно дальнейшее выполнение без его загрузки
+        guard let avatarImage = controller?.setupAvatarImage() else {
+            print(controller?.setupAvatarImage())
+            preconditionFailure("Проблема с доступом аватарки. Изображение не загружено")
+        }
+        profileImageView.image = avatarImage
+    }
     
     private func setupViews() {
         contentView.backgroundColor = UIColor(red: 242, green: 242, blue: 247)
