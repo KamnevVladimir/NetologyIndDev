@@ -37,7 +37,6 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.cornerRadius = 12
-        textField.addTarget(self, action: #selector(statusTextChanged(_:)), for: .editingChanged)
         textField.returnKeyType = .done
         textField.leftView = paddingView
         textField.leftViewMode = .always
@@ -59,8 +58,6 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
         
         return button
     }()
-    
-    private lazy var statusText: String = ""
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -117,12 +114,22 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
     }
     
     @objc private func statusButtonPressed() {
-        statusLabel.text = statusText
-        print(statusLabel.text ?? "")
+        do {
+            let text = try getStatusText()
+            statusLabel.text = text
+        } catch ProfileErrors.missingText {
+            print("Данные не введены")
+        } catch {
+            print("Неизвестная ошибка")
+        }
     }
     
-    @objc private func statusTextChanged(_ textField: UITextField) {
-        statusText = textField.text ?? ""
+    // Создали функцию, где в случае nil выбрасывается соответствующая ошибка
+    private func getStatusText() throws -> String {
+        guard let text = statusTextField.text, text != "" else {
+            throw ProfileErrors.missingText
+        }
+        return text
     }
 }
 

@@ -6,10 +6,12 @@ enum PostErrors: Error {
     case imageNotLoaded
 }
 
+enum ProfileErrors: Error {
+    case missingText
+}
+
 struct PostLoad {
     static func openPost() throws -> Post {
         throw PostErrors.notFound
     }
-    
-    
 }
