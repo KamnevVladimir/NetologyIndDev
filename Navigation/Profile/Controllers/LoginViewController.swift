@@ -116,7 +116,29 @@ final class LoginViewController: UIViewController {
 
     
     @objc private func loginButtonPressed() {
-        coordinator?.showProfileVC()
+        guard let login = loginTextField.text, let password = passwordTextField.text else { return }
+        // Задача 2
+        User.asyncAuth(login: login, password: password) { result in
+            switch result {
+            case .success(let user):
+                print(user)
+                coordinator?.showProfileVC()
+            case .failure(let error):
+                handleError(error)
+            }
+        }
+        
+    }
+    
+    private func handleError(_ error: LoginErrors) {
+        switch error {
+        case .invalidLogin:
+            print("Неправильный логин")
+        case .invalidPassword:
+            print("Неправильный пароль")
+        default:
+            print("Неправильные данные")
+        }
     }
     
     private func setupViews() {
