@@ -46,6 +46,7 @@
 		157D816A2608052C0008FA33 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D81692608052C0008FA33 /* ProfileCoordinator.swift */; };
 		157D8170260810300008FA33 /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D816F260810300008FA33 /* TabBarModel.swift */; };
 		157D8175260818B70008FA33 /* PhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157D8174260818B70008FA33 /* PhotosViewModel.swift */; };
+		15A45E35261DE9CD00A13931 /* ErrorsAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A45E34261DE9CD00A13931 /* ErrorsAlertController.swift */; };
 		15B712A625C6F3120049C4D7 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B712A525C6F3120049C4D7 /* UIStackView.swift */; };
 		15B712AA25C6FEFB0049C4D7 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B712A925C6FEFB0049C4D7 /* PhotosViewController.swift */; };
 		15B712B125C71BC70049C4D7 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B712B025C71BC70049C4D7 /* PhotosCollectionViewCell.swift */; };
@@ -84,6 +85,7 @@
 		157D81692608052C0008FA33 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		157D816F260810300008FA33 /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
 		157D8174260818B70008FA33 /* PhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewModel.swift; sourceTree = "<group>"; };
+		15A45E34261DE9CD00A13931 /* ErrorsAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorsAlertController.swift; sourceTree = "<group>"; };
 		15B712A525C6F3120049C4D7 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		15B712A925C6FEFB0049C4D7 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		15B712B025C71BC70049C4D7 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				1519BA0625C4A8BC00D1B771 /* Feed */,
 				157D816F260810300008FA33 /* TabBarModel.swift */,
 				15BFC1E3261A59AE00EA871C /* PostErrors.swift */,
+				15A45E34261DE9CD00A13931 /* ErrorsAlertController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				1558E282260AA1840011141C /* ProfileViewModel.swift in Sources */,
 				1546C62625C0D954008B3528 /* UIViewController.swift in Sources */,
 				15F5365D25C5EDB100FE3E0E /* PhotosModel.swift in Sources */,
+				15A45E35261DE9CD00A13931 /* ErrorsAlertController.swift in Sources */,
 				15DC3EA12607FC7A00952B25 /* AppCoordinator.swift in Sources */,
 				15B712A625C6F3120049C4D7 /* UIStackView.swift in Sources */,
 				15BB57E025BA45400009750F /* ProfileViewController.swift in Sources */,
