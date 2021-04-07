@@ -7,6 +7,7 @@ protocol ProfileViewOutput: class {
     func onTableViewTap(indexPath: IndexPath)
     func getNumbersOfRows(section: Int) -> Int
     func getPost(indexPath: IndexPath) -> ProfilePost
+    func getAvatarImage() -> UIImage?
 }
 
 class ProfileViewModel: ProfileViewOutput {
@@ -42,6 +43,11 @@ class ProfileViewModel: ProfileViewOutput {
         let post = profileModel.posts[indexPath.section][indexPath.row]
         
         return post
+    }
+    
+    func getAvatarImage() -> UIImage? {
+        print(UIImage(named: "cat.jpg"))
+        return UIImage(named: "cat.jpg")
     }
     
     

@@ -31,6 +31,7 @@ final class PostViewController: UIViewController {
     }
     
     @objc private func addButtonTapped() {
+        
         present(InfoViewController(), animated: true)
     }
 }

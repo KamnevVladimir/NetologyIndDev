@@ -1,9 +1,10 @@
 import UIKit
 
 final class ProfileTableHeaderView: UITableViewHeaderFooterView {
+    var controller: ProfileViewController?
     
     private lazy var profileImageView: UIImageView = {
-        let image = UIImageView(image: UIImage(named: "cat.jpg"))
+        let image = UIImageView()
         image.layer.borderColor = UIColor.white.cgColor
         image.layer.borderWidth = 3
         image.contentMode = .scaleAspectFit
@@ -37,7 +38,6 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.cornerRadius = 12
-        textField.addTarget(self, action: #selector(statusTextChanged(_:)), for: .editingChanged)
         textField.returnKeyType = .done
         textField.leftView = paddingView
         textField.leftViewMode = .always
@@ -60,8 +60,6 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
         return button
     }()
     
-    private lazy var statusText: String = ""
-    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -72,6 +70,17 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
         super.init(coder: coder)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // Задание 4
+        /// Допустим, наше приложение жестко завязано на аватаре пользователя.
+        /// Тогда невозможно дальнейшее выполнение без его загрузки
+        guard let avatarImage = controller?.setupAvatarImage() else {
+            print(controller?.setupAvatarImage())
+            preconditionFailure("Проблема с доступом аватарки. Изображение не загружено")
+        }
+        profileImageView.image = avatarImage
+    }
     
     private func setupViews() {
         contentView.backgroundColor = UIColor(red: 242, green: 242, blue: 247)
@@ -117,12 +126,22 @@ final class ProfileTableHeaderView: UITableViewHeaderFooterView {
     }
     
     @objc private func statusButtonPressed() {
-        statusLabel.text = statusText
-        print(statusLabel.text ?? "")
+        do {
+            let text = try getStatusText()
+            statusLabel.text = text
+        } catch ProfileErrors.missingText {
+            print("Данные не введены")
+        } catch {
+            print("Неизвестная ошибка")
+        }
     }
     
-    @objc private func statusTextChanged(_ textField: UITextField) {
-        statusText = textField.text ?? ""
+    // Создали функцию, где в случае nil выбрасывается соответствующая ошибка
+    private func getStatusText() throws -> String {
+        guard let text = statusTextField.text, text != "" else {
+            throw ProfileErrors.missingText
+        }
+        return text
     }
 }
 

@@ -57,6 +57,11 @@ final class ProfileViewController: UIViewController {
             make.edges.equalTo(tableView)
         }
     }
+    
+    func setupAvatarImage() -> UIImage? {
+        print(output.getAvatarImage())
+        return output.getAvatarImage()
+    }
 }
 
 //MARK: - TableViewDelegate
@@ -111,6 +116,7 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard section == 0 else { return nil }
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: String(describing: ProfileTableHeaderView.self)) as! ProfileTableHeaderView
+        headerView.controller = self
         return headerView
     }
 }
