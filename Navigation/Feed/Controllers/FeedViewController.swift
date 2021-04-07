@@ -11,7 +11,6 @@ import SnapKit
 
 final class FeedViewController: UIViewController {
     weak var coordinator: FeedFlowCoordinator?
-    let post: Post = Post(title: "Пост")
     
     private lazy var postButton: UIButton = {
         let button = UIButton(type: .system)
@@ -81,7 +80,18 @@ final class FeedViewController: UIViewController {
     }
     
     @objc private func postButtonTapped() {
-        coordinator?.showPostVC(post: post)
+        // Задание 1
+        /// Обработка через do-catch с вызовом алерта
+        do {
+            let post = try PostLoad.openPost()
+            coordinator?.showPostVC(post: post)
+        } catch PostErrors.notFound {
+            let alertVC = ErrorsAlertController(title: "Непревзойдённая магия", message: "Ваш пост, он куда-то подевался", preferredStyle: .alert)
+            present(alertVC, animated: true)
+        } catch {
+            let alertVC = ErrorsAlertController(title: "Вы открыли новый вид ошибки!", message: "Лучше забудьте, что вы сюда нажали и не нажимайте больше", preferredStyle: .alert)
+            present(alertVC, animated: true)
+        }
     }
 }
 
