@@ -9,6 +9,7 @@ enum PostErrors: Error {
 struct PostLoad {
     static func openPost() throws -> Post {
         throw PostErrors.notFound
-        return Post(title: "Пост")
     }
+    
+    
 }
