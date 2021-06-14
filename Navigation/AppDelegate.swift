@@ -31,7 +31,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = appCoordinator?.controller
         window?.makeKeyAndVisible()
         
+        downloadData()
+        
         return true
+    }
+    
+    // MARK: - DownloadData
+    /// URLSessionDataTask homework
+    private func downloadData() {
+        guard let configuration = AppConfiguration.getArrayURL().randomElement() else { return }
+        
+        NetworkService.fetchData(with: configuration) { result in
+            switch result {
+            case .success(let data):
+                let dataString = String(data: data, encoding: .utf8)
+                print("--------- Data ---------")
+                print(dataString)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 
 
