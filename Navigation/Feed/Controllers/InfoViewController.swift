@@ -28,6 +28,16 @@ final class InfoViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 16)
         return label
     }()
+    
+    private lazy var periodLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.text = "Период обращения планеты Татуин еще неизвестен"
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 16)
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +45,14 @@ final class InfoViewController: UIViewController {
         setupViews()
         setupLayouts()
         loadPost()
+        loadPlanetPeriod()
     }
     
     private func setupViews() {
         view.backgroundColor = .systemYellow
         view.addSubviews(alertButton,
-                         titleLabel)
+                         titleLabel,
+                         periodLabel)
     }
     
     private func setupLayouts() {
@@ -50,6 +62,11 @@ final class InfoViewController: UIViewController {
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(alertButton.snp.bottom).inset(-20)
+            make.width.equalToSuperview()
+        }
+        
+        periodLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).inset(-20)
             make.width.equalToSuperview()
         }
     }
@@ -63,6 +80,19 @@ final class InfoViewController: UIViewController {
                 self.titleLabel.text = error.localizedDescription
             case .success(let post):
                 self.titleLabel.text = post.title
+            }
+        }
+    }
+    
+    private func loadPlanetPeriod() {
+        let urlString = NetworkURLs.planet.rawValue
+        NetworkService.fetchPlanet(with: urlString) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .failure(let error):
+                self.periodLabel.text = error.localizedDescription
+            case .success(let planet):
+                self.periodLabel.text = "Период обращения планеты Татуин = " + planet.orbitalPeriod + " суток"
             }
         }
     }
