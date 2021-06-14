@@ -18,23 +18,53 @@ final class InfoViewController: UIViewController {
         button.addTarget(self, action: #selector(alertButtonTapped), for: .touchUpInside)
         return button
     }()
+    
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.text = "null"
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 16)
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
         setupLayouts()
+        loadPost()
+    }
+    
+    private func setupViews() {
+        view.backgroundColor = .systemYellow
+        view.addSubviews(alertButton,
+                         titleLabel)
     }
     
     private func setupLayouts() {
         alertButton.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(alertButton.snp.bottom).inset(-20)
+            make.width.equalToSuperview()
+        }
     }
     
-    private func setupViews() {
-        view.backgroundColor = .systemYellow
-        view.addSubview(alertButton)
+    private func loadPost() {
+        let urlString = NetworkURLs.post.rawValue
+        NetworkService.fetchPost(with: urlString) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .failure(let error):
+                self.titleLabel.text = error.localizedDescription
+            case .success(let post):
+                self.titleLabel.text = post.title
+            }
+        }
     }
     
     @objc private func alertButtonTapped() {
