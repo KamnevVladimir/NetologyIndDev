@@ -15,8 +15,12 @@ enum DocumentsErrors: String, Error {
     case badSave      = "Не удалось сохранить Data"
 }
 
-enum DocumentsService {
-    private static var getURL: URL? {
+class DocumentsService: NSObject {
+    public static let shared = DocumentsService()
+    
+    private let fileManager = FileManager.default
+    
+    private var getURL: URL? {
         /// В директории documents отстутствуют файлы, поменял на library
         return try? FileManager.default.url(for: .libraryDirectory,
                                             in: .userDomainMask,
@@ -24,7 +28,12 @@ enum DocumentsService {
                                             create: false)
     }
     
-    static func getNames(callback: @escaping (Result<[String], DocumentsErrors>) -> Void) {
+    private override init() {
+        super.init()
+        fileManager.delegate = self
+    }
+    
+    func getNames(callback: @escaping (Result<[String], DocumentsErrors>) -> Void) {
         guard let libURL = getURL,
               let contents = try? FileManager.default.contentsOfDirectory(atPath: libURL.path)
         else {
@@ -34,7 +43,7 @@ enum DocumentsService {
         callback(.success(contents))
     }
     
-    static func save(_ image: UIImage) -> DocumentsErrors? {
+    func save(_ image: UIImage) -> DocumentsErrors? {
         guard let libURL = getURL else {
             return .badURL
         }
@@ -52,7 +61,7 @@ enum DocumentsService {
         return .none
     }
     
-    static func deleteFile(name: String) -> DocumentsErrors? {
+    func deleteFile(name: String) -> DocumentsErrors? {
         guard let libURL = getURL else {
             return .badURL
         }
@@ -66,5 +75,16 @@ enum DocumentsService {
         }
         
         return nil
+    }
+}
+
+extension DocumentsService: FileManagerDelegate {
+    func fileManager(_ fileManager: FileManager, shouldRemoveItemAtPath path: String) -> Bool {
+        let fileName = fileManager.displayName(atPath: path)
+        let filesName = ["Caches", "Preferences", "Saved Application State", "SplashBoard"]
+        if filesName.contains(fileName) {
+            return false
+        }
+        return true
     }
 }

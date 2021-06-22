@@ -11,6 +11,7 @@ import SnapKit
 final class FeedViewController: UIViewController {
     // MARK: - Stored properties
     weak var coordinator: FeedFlowCoordinator?
+    private var service = DocumentsService.shared
     let post: Post = Post(title: "Пост")
     
     // MARK: - States
@@ -132,7 +133,7 @@ final class FeedViewController: UIViewController {
     
     // MARK: Private methods
     private func loadFiles() {
-        DocumentsService.getNames { [weak self] result in
+        service.getNames { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure(let error)     :
@@ -148,7 +149,7 @@ final class FeedViewController: UIViewController {
     }
     
     private func saveImage(_ image: UIImage) {
-        if let error = DocumentsService.save(image) {
+        if let error = service.save(image) {
             let feedError = ViewState.FeedError(desc: error.rawValue, onReload: loadFiles)
             viewState = ViewState.State.error(feedError)
             return
@@ -157,7 +158,7 @@ final class FeedViewController: UIViewController {
     }
     
     private func deleteFile(name: String) {
-        if let error = DocumentsService.deleteFile(name: name) {
+        if let error = service.deleteFile(name: name) {
             let feedError = ViewState.FeedError(desc: error.rawValue, onReload: loadFiles)
             viewState = ViewState.State.error(feedError)
             return
